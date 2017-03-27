@@ -1,0 +1,34 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Base application theme ******************************************* -->
+    <!-- *************************************************************************************** -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary"> @color/green </item>
+        <item name="colorPrimaryDark"> @color/colorPrimaryDark </item>
+        <item name="colorAccent"> @color/colorAccent </item>
+    </style>
+
+    <!-- *************************************************************************************** -->
+    <!-- ********************* Style the Progress Bar ****************************************** -->
+    <!-- *************************************************************************************** -->
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent"> @color/blue </item>
+        <item name="android:indeterminate"> true </item>
+    </style>
+
+    <!-- *************************************************************************************** -->
+    <!-- ********************* Style the Dialog Box ******************************************** -->
+    <!-- *************************************************************************************** -->
+    <style name="CustomDialog">
+        <item name="android:windowIsFloating"> true </item>
+        <item name="android:windowContentOverlay"> @null </item>
+        <item name="android:windowTitleStyle"> @null </item>
+        <item name="android:typeface"> normal </item>
+        <item name="android:backgroundDimEnabled"> false </item>
+        <item name="android:textSize"> @dimen/thirty_sp </item>
+        <item name="android:textStyle"> bold </item>
+        <item name="android:colorAccent" android:ignore="NewApi"> @color/reseneWhite </item>
+        <item name="android:background"> @color/blue </item>
+    </style>
+</resources>

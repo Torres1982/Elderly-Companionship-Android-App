@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name"> Elderly Companionship </string>
+    <string name="register_button"> Register </string>
+    <string name="login_button"> Log in </string>
+    <string name="login_register_hint"> Enter Your Password </string>
+    <string name="email_hint"> Enter Your Email </string>
+    <string name="name_hint"> Enter Your Name </string>
+    <string name="hobby_add_hint"> Enter Hobby </string>
+    <string name="main_activity_login_button"> Go To Login </string>
+    <string name="main_activity_register_button"> Go To Register </string>
+    <string name="add_hobby_button"> Add Your Hobby </string>
+    <string name="delete_hobby_button"> Delete Your Hobby </string>
+    <string name="find_friends_button"> Find Friends </string>
+    <string name="find_events_button"> Find Events </string>
+    <string name="logout_button"> Log out </string>
+    <string name="find_friend_by_hobby"> Find Friends by Hobby </string>
+    <string name="find_event"> Find Events to Attend </string>
+    <string name="dialog_log_out_message"> Do you want to exit ? </string>
+    <string name="dialog_hobby_message"> Enter your hobby </string>
+    <string name="dialog_button_yes"> Yes </string>
+    <string name="dialog_button_no"> No </string>
+    <string name="dialog_button_ok"> OK </string>
+
+    <!-- KEYBOARD STRINGS -->
+    <string name="keyboard_go"> Go </string>
+    <string name="keyboard_next"> Next </string>
+    <string name="keyboard_send"> Send </string>
+
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Array of Strings of possible hobbies ***************************** -->
+    <!-- *************************************************************************************** -->
+    <string-array name = "hobby_array">
+        <item> Sport </item>
+        <item> Music </item>
+        <item> Theatre </item>
+        <item> Books </item>
+        <item> Film </item>
+        <item> Cooking </item>
+        <item> Crosswords </item>
+        <item> Painting </item>
+        <item> Fishing </item>
+        <item> Gardening </item>
+    </string-array>
+
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Array of Strings of possible events ****************************** -->
+    <!-- *************************************************************************************** -->
+    <string-array name = "event_array">
+        <item> Cinema </item>
+        <item> Theatre </item>
+        <item> Coffee Shop </item>
+        <item> Dance </item>
+        <item> Bingo </item>
+        <item> Run </item>
+    </string-array>
+</resources>

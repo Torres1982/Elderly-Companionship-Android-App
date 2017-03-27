@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:background="@color/grey"
+    tools:context="com.torres.companionshipapp.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/network"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/sixty_dp"
+            android:layout_marginBottom="@dimen/thirty_dp" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/buttonMainActivityLogin"
+            android:text="@string/main_activity_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/buttonMainActivityRegister"
+            android:text="@string/main_activity_register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+    </LinearLayout>
+
+</LinearLayout>

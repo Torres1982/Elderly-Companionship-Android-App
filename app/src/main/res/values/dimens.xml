@@ -1,0 +1,23 @@
+<resources>
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Set up custom dimensions [dp] units ****************************** -->
+    <!-- *************************************************************************************** -->
+    <dimen name="four_dp"> 4dp </dimen>
+    <dimen name="eight_dp"> 8dp </dimen>
+    <dimen name="sixteen_dp"> 16dp </dimen>
+    <dimen name="twenty_dp"> 20dp </dimen>
+    <dimen name="twenty_four_dp"> 24dp </dimen>
+    <dimen name="thirty_dp"> 30dp </dimen>
+    <dimen name="forty_dp"> 40dp </dimen>
+    <dimen name="fifty_dp"> 50dp </dimen>
+    <dimen name="fifty_six_dp"> 56dp </dimen>
+    <dimen name="sixty_dp"> 60dp </dimen>
+    <dimen name="eighty_dp"> 80dp </dimen>
+
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Dimensions used for the Text Size [sp] units ********************* -->
+    <!-- *************************************************************************************** -->
+    <dimen name="twenty_sp"> 20sp </dimen>
+    <dimen name="twenty_four_sp"> 24sp </dimen>
+    <dimen name="thirty_sp"> 30sp </dimen>
+</resources>

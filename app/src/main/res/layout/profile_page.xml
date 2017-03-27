@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.torres.companionshipapp.ProfilePage">
+
+    <TextView
+        android:id="@+id/shown_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sixteen_dp"
+        android:layout_marginStart="@dimen/sixteen_dp"
+        android:textSize="20sp"
+        android:textColor="@android:color/black" />
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/button_add_hobby"
+            android:text="@string/add_hobby_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/button_delete_hobby"
+            android:text="@string/delete_hobby_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/profile_page_button_find_friends"
+            android:text="@string/find_friends_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/profile_page_button_find_events"
+            android:text="@string/find_events_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_radius" />
+
+        <Button
+            android:layout_margin="@dimen/sixteen_dp"
+            android:id="@+id/button_logout"
+            android:text="@string/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_logout" />
+    </LinearLayout>
+
+</RelativeLayout>
