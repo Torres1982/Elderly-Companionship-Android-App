@@ -24,7 +24,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +44,8 @@ public class Registration extends AppCompatActivity {
     EditText registrationPassword;
     ProgressBar registrationProgressBar;
     FirebaseAuth authenticationRegistration;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
 
@@ -166,6 +171,9 @@ public class Registration extends AppCompatActivity {
                                 Toast.makeText(Registration.this, authenticationFailed, Toast.LENGTH_LONG).show();
                             }
                             else {
+                                // Add a user and details to Database
+                                saveUserToFirebaseDatabase();
+
                                 Toast.makeText(Registration.this, userCreated, Toast.LENGTH_LONG).show();
 
                                 // Prepare the intent and send the username to Profile Page activity
@@ -312,5 +320,32 @@ public class Registration extends AppCompatActivity {
             showDialog();
             //Toast.makeText(Registration.this, noNetworkConnection, Toast.LENGTH_LONG).show();
         }
+    }
+
+    // *********************************************************************************************
+    // ******************** Save User with details to Database *************************************
+    // *********************************************************************************************
+    private void saveUserToFirebaseDatabase() {
+
+        // Retrieve the new instance of a User
+        User newUser = new User();
+        String userId = newUser.getUserId();
+
+        String key1 = "username";
+        String key2 = "email";
+
+        // Get the Firebase Database instance
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        // Get the Database reference
+        databaseReference = firebaseDatabase.getReference("https://companionship-app.firebaseio.com/");
+
+        // Create a Hash Map of User's details
+        HashMap userDetailsHashMap = new HashMap();
+
+        // Put User's details to the Hash Map
+        userDetailsHashMap.put(key1, username);
+        userDetailsHashMap.put(key2, email);
+
+        databaseReference.child("users").child(userId).push().setValue(userDetailsHashMap);
     }
 }
