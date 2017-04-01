@@ -24,10 +24,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,6 +41,7 @@ public class Registration extends AppCompatActivity {
     String email;
     String password;
     String message;
+    String userId;
     EditText name;
     EditText registrationEmail;
     EditText registrationPassword;
@@ -46,6 +49,7 @@ public class Registration extends AppCompatActivity {
     FirebaseAuth authenticationRegistration;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
 
@@ -327,25 +331,29 @@ public class Registration extends AppCompatActivity {
     // *********************************************************************************************
     private void saveUserToFirebaseDatabase() {
 
-        // Retrieve the new instance of a User
-        User newUser = new User();
-        String userId = newUser.getUserId();
-
         String key1 = "username";
         String key2 = "email";
 
         // Get the Firebase Database instance
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Get the Database reference
-        databaseReference = firebaseDatabase.getReference("https://companionship-app.firebaseio.com/");
+        databaseReference = firebaseDatabase.getReferenceFromUrl("https://companionship-app.firebaseio.com/");
+
+        // Get the Firebase User
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Get the User ID
+        userId = firebaseUser.getUid();
 
         // Create a Hash Map of User's details
-        HashMap userDetailsHashMap = new HashMap();
+        Map<String, String> userDetailsHashMap = new HashMap<>();
 
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
 
+        // Use push() method to create a unique id for each user
+        // Used in case of concurrent multiple users trying to save their details in database
         databaseReference.child("users").child(userId).push().setValue(userDetailsHashMap);
     }
 }
