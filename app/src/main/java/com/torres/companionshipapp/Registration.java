@@ -345,7 +345,7 @@ public class Registration extends AppCompatActivity {
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
-        
+
         // Use push() method to create a unique id for each user
         // Used in case of concurrent multiple users trying to save their details in database
         databaseReference.child("users").push().setValue(userDetailsHashMap);
