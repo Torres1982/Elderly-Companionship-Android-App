@@ -1,13 +1,12 @@
 package com.torres.companionshipapp;
 
-import com.google.firebase.database.IgnoreExtraProperties;
+import android.app.Application;
 
-@IgnoreExtraProperties
-public class User {
+public class User extends Application {
 
-    public String userId;
-    public String username;
-    public String email;
+    private String userId;
+    private String name;
+    private String email;
 
     // Default constructor required for calls to DataSnapshot.getValue(User.class)
     public User() {}
@@ -21,12 +20,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
