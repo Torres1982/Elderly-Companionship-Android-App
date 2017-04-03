@@ -24,7 +24,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,15 +40,12 @@ public class Registration extends AppCompatActivity {
     String email;
     String password;
     String message;
-    String userId;
     EditText name;
     EditText registrationEmail;
     EditText registrationPassword;
     ProgressBar registrationProgressBar;
     FirebaseAuth authenticationRegistration;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    FirebaseUser firebaseUser;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
 
@@ -60,6 +56,12 @@ public class Registration extends AppCompatActivity {
 
         // Get the Firebase authentication instance
         authenticationRegistration = FirebaseAuth.getInstance();
+
+        // Instantiate the global class User
+        //globalClassUser = (User)getApplicationContext();
+
+        // Get User id
+        //userId = globalClassUser.getUserId();
 
         // Call the supportive methods
         setUpActionBar();
@@ -334,16 +336,8 @@ public class Registration extends AppCompatActivity {
         String key1 = "username";
         String key2 = "email";
 
-        // Get the Firebase Database instance
-        firebaseDatabase = FirebaseDatabase.getInstance();
         // Get the Database reference
-        databaseReference = firebaseDatabase.getReferenceFromUrl("https://companionship-app.firebaseio.com/");
-
-        // Get the Firebase User
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        // Get the User ID
-        userId = firebaseUser.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
 
         // Create a Hash Map of User's details
         Map<String, String> userDetailsHashMap = new HashMap<>();
@@ -351,9 +345,9 @@ public class Registration extends AppCompatActivity {
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
-
+        
         // Use push() method to create a unique id for each user
         // Used in case of concurrent multiple users trying to save their details in database
-        databaseReference.child("users").child(userId).push().setValue(userDetailsHashMap);
+        databaseReference.child("users").push().setValue(userDetailsHashMap);
     }
 }
