@@ -24,7 +24,7 @@
         <activity android:name=".FriendsFinder"> </activity>
         <activity android:name=".EventsFinder"> </activity>
         <activity android:name=".HobbyAdd"> </activity>
-        <activity android:name=".HobbyDelete"> </activity>
+        <activity android:name=".Map"> </activity>
         <activity android:name=".CustomActionBar"> </activity>
 
     </application>
