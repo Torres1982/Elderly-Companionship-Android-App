@@ -11,7 +11,6 @@ public class User extends Application {
     // Default constructor required for calls to DataSnapshot.getValue(User.class)
     public User() {}
 
-
     public String getUserId() {
         return userId;
     }
