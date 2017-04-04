@@ -9,11 +9,12 @@
     <string name="main_activity_login_button"> Go To Login </string>
     <string name="main_activity_register_button"> Go To Register </string>
     <string name="add_hobby_button"> Add Your Hobby </string>
+    <string name="choose_hobby"> Choose Your Hobby </string>
     <string name="map_show_places"> Show Places on Map </string>
     <string name="choose_place_on_map"> Choose the Place </string>
     <string name="find_friends_button"> Find Friends </string>
     <string name="find_events_button"> Find Events </string>
-    <string name="logout_button"> Log out </string>
+    <string name="logout_button"> Log Out </string>
     <string name="find_friend_by_hobby"> Find Friends by Hobby </string>
     <string name="find_event"> Find Events to Attend </string>
     <string name="dialog_log_out_message"> Do you want to exit ? </string>
