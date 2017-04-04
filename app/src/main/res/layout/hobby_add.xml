@@ -28,7 +28,6 @@
         android:layout_marginTop="@dimen/sixteen_dp" />
 
     <Button
-        android:layout_margin="@dimen/sixteen_dp"
         android:id="@+id/button_hobby_add"
         android:text="@string/add_hobby_button"
         android:layout_width="match_parent"
@@ -36,6 +35,11 @@
         android:textSize="30sp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:background="@drawable/button_radius" />
+        android:background="@drawable/button_radius"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/sixteen_dp"
+        android:layout_marginRight="@dimen/sixteen_dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
