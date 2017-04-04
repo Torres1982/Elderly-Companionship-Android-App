@@ -162,9 +162,6 @@ public class ProfilePage extends AppCompatActivity {
     // *********************************************************************************************
     public void createLogOutDialog() {
 
-        // Create local variables
-        //String alertMessage = "Do you want to exit ?";
-
         // Create a new instance of Dialog builder
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ProfilePage.this, R.style.CustomDialog);
 
@@ -202,7 +199,7 @@ public class ProfilePage extends AppCompatActivity {
 
     // *********************************************************************************************
     // ******************** Log Out the user *******************************************************
-    // ******************** Destroy the user's session *********************************************
+    // ******************** Destroy the user session ***********************************************
     // *********************************************************************************************
     private void logOutAuthenticate() {
 
@@ -213,7 +210,8 @@ public class ProfilePage extends AppCompatActivity {
 
         if (user == null) {
             executeIntent();
-        } else {
+        }
+        else {
             // User would not be logged out
             // Used for testing only !!!
             String userEmail = user.getEmail();
