@@ -39,6 +39,7 @@ public class Registration extends AppCompatActivity {
     Button registerButton;
     String username;
     String email;
+    String hobby;
     String password;
     String message;
     String userId;
@@ -333,8 +334,11 @@ public class Registration extends AppCompatActivity {
     // *********************************************************************************************
     private void saveUserToFirebaseDatabase() {
 
+        // Values used for the Hash Map (to save to Firebase database)
         String key1 = "username";
         String key2 = "email";
+        String key3 = "hobby";
+        hobby = "Dummy";
 
         // Get the Database reference
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
@@ -357,6 +361,7 @@ public class Registration extends AppCompatActivity {
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
+        userDetailsHashMap.put(key3, hobby);
 
         // Save User's details in the Firebase database (at root "users")
         databaseReference.child("users").child(userId).setValue(userDetailsHashMap);
