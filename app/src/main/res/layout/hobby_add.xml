@@ -7,35 +7,35 @@
     android:background="@color/grey"
     tools:context="com.torres.companionshipapp.HobbyAdd">
 
-    <LinearLayout
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hobby_add_spinner"
+        android:entries="@array/hobby_array"
+        android:layout_marginTop="@dimen/sixteen_dp"
+        android:layout_below="@+id/hobby_add_textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/hobby_add_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_hobby"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
+        android:layout_marginTop="@dimen/sixteen_dp" />
+
+    <Button
+        android:layout_margin="@dimen/sixteen_dp"
+        android:id="@+id/button_hobby_add"
+        android:text="@string/add_hobby_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_margin="@dimen/sixteen_dp"
-            android:hint="@string/hobby_add_hint"
-            android:id="@+id/edit_text_hobby_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/red"
-            android:background="@drawable/edit_text_border" />
-
-        <Button
-            android:layout_margin="@dimen/sixteen_dp"
-            android:id="@+id/button_hobby_add"
-            android:text="@string/add_hobby_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:background="@drawable/button_radius" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_radius" />
 
 </RelativeLayout>
