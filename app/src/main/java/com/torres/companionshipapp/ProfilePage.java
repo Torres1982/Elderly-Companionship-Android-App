@@ -1,8 +1,6 @@
 package com.torres.companionshipapp;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,12 +15,20 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfilePage extends AppCompatActivity {
 
     // Declare global variables and objects
     String username;
     String welcome;
+    String userId;
+    String loggedUser;
     TextView usernameTextView;
     Button findFriendsButton;
     Button findEventsButton;
@@ -30,6 +36,8 @@ public class ProfilePage extends AppCompatActivity {
     Button addHobbyButton;
     Button deleteHobbyButton;
     FirebaseAuth logOutAuthentication;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,25 +47,22 @@ public class ProfilePage extends AppCompatActivity {
         // Get the Firebase authentication instance
         logOutAuthentication = FirebaseAuth.getInstance();
 
-        // Call the supportive methods
-        setUpActionBar();
-
-        // Retrieve the username through the intent (from Registration activity)
-        //Intent profilePageIntent = getIntent();
-        //username = profilePageIntent.getExtras().getString("username");
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            username = extras.getString("username");
-            welcome = "Welcome " + username;
-        }
-        else {
-            welcome = "Welcome ";
-        }
-        // Retrieve the name from the Text View
         // Assign the name of the user to the Text View
         usernameTextView = (TextView)findViewById(R.id.shown_name_text_view);
-        //welcome = "Welcome " + username;
-        usernameTextView.setText(welcome);
+
+        // Call the supportive methods
+        setUpActionBar();
+        getUserNameFromFirebaseDatabase();
+
+        // Retrieve the username through the intent (from Registration activity)
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            username = extras.getString("username");
+            // Set text view with welcome message
+            welcome = "Welcome " + username;
+            usernameTextView.setText(welcome);
+        }
 
         // Retrieve the reference of the objects from the profile_page.xml file
         findFriendsButton = (Button)findViewById(R.id.profile_page_button_find_friends);
@@ -252,5 +257,44 @@ public class ProfilePage extends AppCompatActivity {
         myTitleTextView.setText(actionBarTitle);
         myCustomActionBar.setCustomView(myCustomView);
         myCustomActionBar.setDisplayShowCustomEnabled(true);
+    }
+
+    // *********************************************************************************************
+    // ******************** Get the User Name from Database ****************************************
+    // *********************************************************************************************
+    public void getUserNameFromFirebaseDatabase() {
+
+        // Get the Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Get the Firebase User instance
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Assign Firebase User Id for the user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+
+        Query userDetails = databaseReference.child("users").child(userId);
+
+        userDetails.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot databaseSnapshot) {
+
+                if (databaseSnapshot.exists()) {
+                    loggedUser = databaseSnapshot.child("username").getValue(String.class);
+                    Toast.makeText(ProfilePage.this, loggedUser, Toast.LENGTH_LONG).show();
+
+                    // Set text view with welcome message
+                    welcome = "Welcome " + loggedUser;
+                    usernameTextView.setText(welcome);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Nothing to do here
+            }
+        });
     }
 }
