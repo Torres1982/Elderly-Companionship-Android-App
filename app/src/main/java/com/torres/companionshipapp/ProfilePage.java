@@ -137,7 +137,7 @@ public class ProfilePage extends AppCompatActivity {
         deleteHobbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), HobbyDelete.class);
+                Intent intent = new Intent (getApplicationContext(), Map.class);
                 startActivity(intent);
             }
         });
