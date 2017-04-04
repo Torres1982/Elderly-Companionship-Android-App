@@ -7,32 +7,30 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class HobbyAdd extends AppCompatActivity {
 
     // Declare global variables and objects
     Button addMyHobbyButton;
-    EditText addMyHobbyEditText;
-    String hobbyFromEditText;
     String message;
+    String spinnerValue;
+    Spinner spinner;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hobby_add);
 
-        // Call the supportive methods
-        setUpActionBar();
-
         // Retrieve the reference of the objects from the hobby_add.xml file
         addMyHobbyButton = (Button)findViewById(R.id.button_hobby_add);
-        addMyHobbyEditText = (EditText)findViewById(R.id.edit_text_hobby_add);
+        spinner = (Spinner) findViewById(R.id.hobby_add_spinner);
+
+        // Call the supportive methods
+        setUpActionBar();
+        setUpSpinner();
 
         // Call the methods with assigned Listeners
         addListenerToHobbyAddButton();
@@ -46,11 +44,10 @@ public class HobbyAdd extends AppCompatActivity {
         addMyHobbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the email and password from the Edit Text fields
-                hobbyFromEditText = addMyHobbyEditText.getText().toString().trim();
 
-                validateInputAddHobby(hobbyFromEditText);
-                //showDialog();
+                // Get the value from the selected dropdown list
+                spinnerValue = String.valueOf(spinner.getSelectedItem());
+                showDialog();
             }
         });
     }
@@ -58,7 +55,7 @@ public class HobbyAdd extends AppCompatActivity {
     // *********************************************************************************************
     // ******************** Validate the input taken from the User Edit Text field *****************
     // *********************************************************************************************
-    public void validateInputAddHobby(String string) {
+    /*public void validateInputAddHobby(String string) {
 
         // Check if the Edit Text field has not been left empty
         if (string == null || string.length() == 0) {
@@ -85,7 +82,7 @@ public class HobbyAdd extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), validatedGood, Toast.LENGTH_LONG).show();
             }
         }
-    }
+    }*/
 
     // *********************************************************************************************
     // ******************** Set up custom Action Bar title *****************************************
@@ -118,6 +115,7 @@ public class HobbyAdd extends AppCompatActivity {
     // *********************************************************************************************
     private void showDialog() {
 
+        // Get the message to display on dialog
         constructSharedPreferences();
 
         CustomDialog customDialog = new CustomDialog();
@@ -132,7 +130,7 @@ public class HobbyAdd extends AppCompatActivity {
     public void constructSharedPreferences() {
 
         String key = "message";
-        //message = "Enter Your Hobby";
+        message = spinnerValue + " has been added to your hobbies";
 
         // Create object of Shared Preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -142,5 +140,15 @@ public class HobbyAdd extends AppCompatActivity {
         editor.putString(key, message);
         // Commit the Edit
         editor.apply();
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Spinner **************************************************
+    // ******************** Edit Spinner text size and colors **************************************
+    // *********************************************************************************************
+    public void setUpSpinner() {
+
+        ArrayAdapter spinnerArrayAdapter = ArrayAdapter.createFromResource(this, R.array.hobby_array, R.layout.spinner_edit);
+        spinner.setAdapter(spinnerArrayAdapter);
     }
 }
