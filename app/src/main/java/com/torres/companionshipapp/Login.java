@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,22 +34,23 @@ public class Login extends AppCompatActivity {
     String email;
     String password;
     String message;
+    //String userId;
+    //String loggedUser;
     EditText loginEmail;
     EditText loginPassword;
     ProgressBar loginProgressBar;
-    FirebaseAuth authenticationLogin;
+    //FirebaseAuth authenticationLogin;
+    //FirebaseUser firebaseUser;
+    //DatabaseReference databaseReference;
     private boolean isValidatedEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the Firebase authentication instance
-        authenticationLogin = FirebaseAuth.getInstance();
-
         // Keep the user's session in memory
         // Only clicking the Log Out button will clear it
-        if (authenticationLogin.getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(Login.this, ProfilePage.class));
             finish();
         }
@@ -130,12 +129,12 @@ public class Login extends AppCompatActivity {
                 loginProgressBar.setVisibility(View.VISIBLE);
 
                 // Authenticate the user with associated email address as an user login
-                authenticationLogin.signInWithEmailAndPassword(email, password)
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            String userCreated = "You are logged in";
+                            //String userCreated = "You are logged in";
                             String authenticationFailed = "Email does not match password. Try again";
 
                             // Disable the Progress Bar
@@ -147,7 +146,7 @@ public class Login extends AppCompatActivity {
                                 showDialog();
                             }
                             else {
-                                Toast.makeText(Login.this, userCreated, Toast.LENGTH_LONG).show();
+                                //Toast.makeText(Login.this, userCreated, Toast.LENGTH_LONG).show();
 
                                 // Prepare the intent and send the username to Profile Page activity
                                 Intent loginIntent = new Intent (getApplicationContext(), ProfilePage.class);
@@ -277,4 +276,54 @@ public class Login extends AppCompatActivity {
             //Toast.makeText(Login.this, noNetworkConnection, Toast.LENGTH_LONG).show();
         }
     }
+
+    // *********************************************************************************************
+    // ******************** Get the User Name from Database ****************************************
+    // *********************************************************************************************
+    /*public void getUserNameFromFirebaseDatabase() {
+
+        // Get the Database reference
+        //databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/users");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Get the Firebase User instance
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Assign Firebase User Id for the user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+
+        Query userDetails = databaseReference.child("users").child(userId);
+
+        userDetails.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // Iterate through the database
+                for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
+                    // Get the User Firebase email
+                    //String firebaseUserEmail = firebaseUser.getEmail();
+                    //String loggedUser = myDatabase.child(userId).child("username").getValue(String.class);
+                    //Toast.makeText(Login.this, loggedUser, Toast.LENGTH_LONG).show();
+
+                    String loggedUser = myDatabase.child("username").getValue(String.class);
+                    Toast.makeText(Login.this, loggedUser, Toast.LENGTH_LONG).show();
+
+                    // THIS WORKS !!!
+                    //Toast.makeText(Login.this, userId, Toast.LENGTH_LONG).show();
+                    // THIS WORKS !!!
+                    //Toast.makeText(Login.this, firebaseUserEmail, Toast.LENGTH_LONG).show();
+
+                    //String a = myDatabase.child("username").getValue(String.class);
+                    //Toast.makeText(Login.this, "Username: " + a, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Nothing to do here
+            }
+        });
+    }*/
 }
