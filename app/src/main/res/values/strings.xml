@@ -31,28 +31,40 @@
     <!-- ******************** Array of Strings of possible hobbies ***************************** -->
     <!-- *************************************************************************************** -->
     <string-array name = "hobby_array">
-        <item> Sport </item>
-        <item> Music </item>
-        <item> Theatre </item>
+        <item> Boating </item>
         <item> Books </item>
-        <item> Film </item>
+        <item> Bowling </item>
+        <item> Cars </item>
+        <item> Chess </item>
+        <item> Computers </item>
         <item> Cooking </item>
+        <item> Crafts </item>
         <item> Crosswords </item>
-        <item> Painting </item>
+        <item> Cycling </item>
+        <item> Film </item>
         <item> Fishing </item>
         <item> Gardening </item>
+        <item> Golf </item>
+        <item> Hiking </item>
+        <item> Music </item>
+        <item> Painting </item>
+        <item> Photography </item>
+        <item> Sport </item>
+        <item> Snooker </item>
+        <item> Swimming </item>
+        <item> Tennis </item>
+        <item> Theatre </item>
     </string-array>
 
     <!-- *************************************************************************************** -->
     <!-- ******************** Array of Strings of possible events ****************************** -->
     <!-- *************************************************************************************** -->
     <string-array name = "event_array">
+        <item> Bingo </item>
         <item> Cinema </item>
-        <item> Theatre </item>
         <item> Coffee Shop </item>
         <item> Dance </item>
-        <item> Bingo </item>
-        <item> Run </item>
+        <item> Theatre </item>
     </string-array>
 
     <!-- *************************************************************************************** -->
@@ -60,9 +72,9 @@
     <!-- *************************************************************************************** -->
     <string-array name = "map_array">
         <item> Cinema </item>
-        <item> Theatre </item>
         <item> Coffee Shop </item>
         <item> Museum </item>
+        <item> Theatre </item>
     </string-array>
 
 </resources>
