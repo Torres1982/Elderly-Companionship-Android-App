@@ -345,7 +345,7 @@ public class Registration extends AppCompatActivity {
         // Get the Firebase User instance
         firebaseUser = authenticationRegistration.getCurrentUser();
 
-        // Assign Firebase User Id for the user
+        // Retrieve Firebase User Id for currently logged in user
         if (firebaseUser != null) {
             userId = firebaseUser.getUid();
         }
@@ -358,8 +358,7 @@ public class Registration extends AppCompatActivity {
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
 
-        // Use push() method to create a unique id for each user
-        // Used in case of concurrent multiple users trying to save their details in database
+        // Save User's details in the Firebase database (at root "users")
         databaseReference.child("users").child(userId).setValue(userDetailsHashMap);
     }
 }
