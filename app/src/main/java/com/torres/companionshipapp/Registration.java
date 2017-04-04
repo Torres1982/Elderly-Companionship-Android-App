@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,11 +41,13 @@ public class Registration extends AppCompatActivity {
     String email;
     String password;
     String message;
+    String userId;
     EditText name;
     EditText registrationEmail;
     EditText registrationPassword;
     ProgressBar registrationProgressBar;
     FirebaseAuth authenticationRegistration;
+    FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
@@ -58,10 +61,7 @@ public class Registration extends AppCompatActivity {
         authenticationRegistration = FirebaseAuth.getInstance();
 
         // Instantiate the global class User
-        //globalClassUser = (User)getApplicationContext();
-
-        // Get User id
-        //userId = globalClassUser.getUserId();
+        //globalClassUser = new User();
 
         // Call the supportive methods
         setUpActionBar();
@@ -342,12 +342,24 @@ public class Registration extends AppCompatActivity {
         // Create a Hash Map of User's details
         Map<String, String> userDetailsHashMap = new HashMap<>();
 
+        // Get the Firebase User instance
+        firebaseUser = authenticationRegistration.getCurrentUser();
+
+        // Assign Firebase User Id for the user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+        else {
+            // More likely it will not happen
+            Toast.makeText(Registration.this, "Empty User Value!", Toast.LENGTH_LONG).show();
+        }
+
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
 
         // Use push() method to create a unique id for each user
         // Used in case of concurrent multiple users trying to save their details in database
-        databaseReference.child("users").push().setValue(userDetailsHashMap);
+        databaseReference.child("users").child(userId).setValue(userDetailsHashMap);
     }
 }
