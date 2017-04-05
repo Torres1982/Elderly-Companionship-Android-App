@@ -11,17 +11,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class FriendsFinder extends AppCompatActivity {
 
     // Declare global variables and objects
     String spinnerValue;
     Spinner spinner;
     Button findFriendsButton;
+    String userId;
+    FirebaseAuth firebaseAuthentication;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends_finder);
+
+        // Get the Firebase authentication instance
+        firebaseAuthentication = FirebaseAuth.getInstance();
 
         // Get reference of the objects from the friends_finder.xml file
         findFriendsButton = (Button)findViewById(R.id.button_find_friends);
@@ -42,6 +57,8 @@ public class FriendsFinder extends AppCompatActivity {
     public void addListenerToFindFriendsButton () {
         findFriendsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View view) {
+
+                getUserDetailsFromFirebaseDatabase();
 
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
@@ -85,5 +102,54 @@ public class FriendsFinder extends AppCompatActivity {
 
         ArrayAdapter spinnerArrayAdapter = ArrayAdapter.createFromResource(this, R.array.hobby_array, R.layout.spinner_edit);
         spinner.setAdapter(spinnerArrayAdapter);
+    }
+
+    // *********************************************************************************************
+    // ******************** Get the User Details from Database *************************************
+    // *********************************************************************************************
+    public void getUserDetailsFromFirebaseDatabase() {
+
+        // Get the Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/users");
+        //databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Get the Firebase User instance
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Assign Firebase User Id for the user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+
+        //Query userDetails = databaseReference.child("users").child(userId);
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String hobby;
+                String databaseUser;
+
+                // Iterate through the database
+                for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
+
+                    // Get User name from Firebase database
+                    databaseUser = myDatabase.child("username").getValue(String.class);
+                    // Get User hobby from Firebase database
+                    hobby = myDatabase.child("hobby").getValue(String.class);
+
+                    if (spinnerValue.equals(hobby)) {
+                        Toast.makeText(FriendsFinder.this, databaseUser + " " + hobby, Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Nothing to do here
+            }
+        });
     }
 }
