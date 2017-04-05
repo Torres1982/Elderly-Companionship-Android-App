@@ -1,6 +1,8 @@
 package com.torres.companionshipapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -24,6 +26,8 @@ public class FriendsFinder extends AppCompatActivity {
     // Declare global variables and objects
     String spinnerValue;
     Spinner spinner;
+    String message;
+    String hobby;
     Button findFriendsButton;
     String userId;
     FirebaseAuth firebaseAuthentication;
@@ -58,13 +62,13 @@ public class FriendsFinder extends AppCompatActivity {
         findFriendsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View view) {
 
-                getUserDetailsFromFirebaseDatabase();
-
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
 
-                String chosenValue = "Value chosen: ";
-                Toast.makeText(FriendsFinder.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
+                getUserDetailsFromFirebaseDatabase();
+
+                //String chosenValue = "Value chosen: ";
+                //Toast.makeText(FriendsFinder.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -121,14 +125,13 @@ public class FriendsFinder extends AppCompatActivity {
             userId = firebaseUser.getUid();
         }
 
-        //Query userDetails = databaseReference.child("users").child(userId);
-
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String hobby;
+                //String hobby;
                 String databaseUser;
+                boolean isHobbyFound = false;
 
                 // Iterate through the database
                 for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
@@ -138,9 +141,18 @@ public class FriendsFinder extends AppCompatActivity {
                     // Get User hobby from Firebase database
                     hobby = myDatabase.child("hobby").getValue(String.class);
 
+                    // Display users' details with matching hobby
                     if (spinnerValue.equals(hobby)) {
                         Toast.makeText(FriendsFinder.this, databaseUser + " " + hobby, Toast.LENGTH_LONG).show();
+                        isHobbyFound = true;
                     }
+                }
+
+                if(isHobbyFound) {
+                    isHobbyFound = false;
+                }
+                else {
+                    showDialog();
                 }
             }
 
@@ -149,5 +161,38 @@ public class FriendsFinder extends AppCompatActivity {
                 // Nothing to do here
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Instantiate the Custom Dialog class ************************************
+    // ******************** Retrieve the Custom Dialog View ****************************************
+    // *********************************************************************************************
+    private void showDialog() {
+
+        // Get the message to display on dialog
+        constructSharedPreferences();
+
+        CustomDialog customDialog = new CustomDialog();
+        customDialog.setCancelable(false);
+        customDialog.show(getSupportFragmentManager(), "CUSTOM DIALOG");
+    }
+
+    // *********************************************************************************************
+    // ******************** Create Shared Preferences *************************************************
+    // ******************** Send the title for the Custom Dialog ***********************************
+    // *********************************************************************************************
+    public void constructSharedPreferences() {
+
+        String key = "message";
+        message = "There are no friends with " + spinnerValue + " hobby registered yet";
+
+        // Create object of Shared Preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        // Get Editor
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // Assign the string value for the Custom Dialog title
+        editor.putString(key, message);
+        // Commit the Edit
+        editor.apply();
     }
 }
