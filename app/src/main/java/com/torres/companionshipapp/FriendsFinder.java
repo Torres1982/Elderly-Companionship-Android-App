@@ -141,8 +141,6 @@ public class FriendsFinder extends AppCompatActivity {
                     if (spinnerValue.equals(hobby)) {
                         Toast.makeText(FriendsFinder.this, databaseUser + " " + hobby, Toast.LENGTH_LONG).show();
                     }
-
-
                 }
             }
 
