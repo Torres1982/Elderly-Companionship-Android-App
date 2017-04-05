@@ -281,7 +281,7 @@ public class ProfilePage extends AppCompatActivity {
 
                 if (databaseSnapshot.exists()) {
                     loggedUser = databaseSnapshot.child("username").getValue(String.class);
-                    Toast.makeText(ProfilePage.this, loggedUser, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ProfilePage.this, loggedUser, Toast.LENGTH_LONG).show();
 
                     // Set text view with welcome message
                     welcome = "Welcome " + loggedUser;
