@@ -12,6 +12,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class HobbyAdd extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -19,10 +24,17 @@ public class HobbyAdd extends AppCompatActivity {
     String message;
     String spinnerValue;
     Spinner spinner;
+    String userId;
+    FirebaseAuth firebaseAuthentication;
+    DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hobby_add);
+
+        // Get the Firebase authentication instance
+        firebaseAuthentication = FirebaseAuth.getInstance();
 
         // Retrieve the reference of the objects from the hobby_add.xml file
         addMyHobbyButton = (Button)findViewById(R.id.button_hobby_add);
@@ -48,41 +60,10 @@ public class HobbyAdd extends AppCompatActivity {
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
                 showDialog();
+                addHobbyToFirebaseDatabase();
             }
         });
     }
-
-    // *********************************************************************************************
-    // ******************** Validate the input taken from the User Edit Text field *****************
-    // *********************************************************************************************
-    /*public void validateInputAddHobby(String string) {
-
-        // Check if the Edit Text field has not been left empty
-        if (string == null || string.length() == 0) {
-            message = "Enter Your Hobby";
-            showDialog();
-            //Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        }
-        else {
-            // Validate the input so it can contains only letters
-            Pattern pattern = Pattern.compile("^[a-zA-Z ]+$");
-            Matcher matcher = pattern.matcher(string);
-
-            // Check if matcher matches the pattern (regular expression)
-            boolean isValidated = matcher.matches();
-
-            // The matcher does not match the regular expression
-            if (!isValidated) {
-                message = "Use Letters Only";
-                showDialog();
-                //Toast.makeText(getApplicationContext(), validatedWrong, Toast.LENGTH_LONG).show();
-            }
-            else {
-                String validatedGood = "Validation successful";
-                Toast.makeText(getApplicationContext(), validatedGood, Toast.LENGTH_LONG).show();
-            }
-        }
-    }*/
 
     // *********************************************************************************************
     // ******************** Set up custom Action Bar title *****************************************
@@ -150,5 +131,23 @@ public class HobbyAdd extends AppCompatActivity {
 
         ArrayAdapter spinnerArrayAdapter = ArrayAdapter.createFromResource(this, R.array.hobby_array, R.layout.spinner_edit);
         spinner.setAdapter(spinnerArrayAdapter);
+    }
+
+    // Add a user and details to Database
+    public void addHobbyToFirebaseDatabase() {
+
+        // Get the Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
+
+        // Get the Firebase User instance
+        firebaseUser = firebaseAuthentication.getCurrentUser();
+
+        // Retrieve Firebase User Id for currently logged in user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+
+        // Save User's details in the Firebase database (at root "users")
+        databaseReference.child("users").child(userId).child("hobby").setValue(spinnerValue);
     }
 }
