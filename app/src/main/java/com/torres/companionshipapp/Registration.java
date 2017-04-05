@@ -61,9 +61,6 @@ public class Registration extends AppCompatActivity {
         // Get the Firebase authentication instance
         authenticationRegistration = FirebaseAuth.getInstance();
 
-        // Instantiate the global class User
-        //globalClassUser = new User();
-
         // Call the supportive methods
         setUpActionBar();
         checkNetworkAvailability();
