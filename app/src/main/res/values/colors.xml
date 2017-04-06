@@ -10,5 +10,5 @@
     <color name="orange"> #ffa500 </color>
     <color name="blue"> #0000ff </color>
     <color name="grey"> #bdbdbd </color>
-    <color name="dark_grey"> #808080 </color>
+    <color name="dark_grey"> #2f4f4f </color>
 </resources>
