@@ -37,7 +37,7 @@
     <!-- *************************************************************************************** -->
     <style name="ListViewStyle.Light" parent="android:style/Widget.ListView">
         <item name="android:divider"> @color/reseneWhite </item>
-        <item name="android:dividerHeight"> 1dp </item>
+        <item name="android:dividerHeight"> 2dp </item>
         <item name="android:listSelector"> @drawable/button_radius </item>
         <item name="android:drawSelectorOnTop"> false </item>
     </style>
