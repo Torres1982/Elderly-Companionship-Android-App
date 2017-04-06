@@ -34,7 +34,6 @@
                     android:textAllCaps="false"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="@dimen/twenty_four_sp" />
-
         </RelativeLayout>
 
 </LinearLayout>
