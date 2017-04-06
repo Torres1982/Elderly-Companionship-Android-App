@@ -43,18 +43,16 @@
         android:layout_centerHorizontal="true" />
 
     <ListView
+        style="@style/ListViewStyle.Light"
         android:id="@+id/list_view"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:choiceMode="singleChoice"
-        android:background="@drawable/button_radius"
-        android:dividerHeight="1dp"
-        android:divider="@color/reseneWhite"
-        android:fastScrollEnabled="true"
         android:layout_marginLeft="@dimen/sixteen_dp"
         android:layout_marginStart="@dimen/sixteen_dp"
         android:layout_marginRight="@dimen/sixteen_dp"
         android:layout_marginEnd="@dimen/sixteen_dp"
+        android:background="@drawable/list_view_selector"
         android:layout_below="@+id/hobby_spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
