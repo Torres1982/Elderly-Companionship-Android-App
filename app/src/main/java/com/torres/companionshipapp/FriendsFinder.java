@@ -220,6 +220,6 @@ public class FriendsFinder extends AppCompatActivity {
     // *********************************************************************************************
     public void createListView() {
         // Set Array Adapter to create a Scrollable List View
-        friendsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, friendsArrayList));
+        friendsListView.setAdapter(new ArrayAdapter<>(this, R.layout.custom_simple_list_item, friendsArrayList));
     }
 }
