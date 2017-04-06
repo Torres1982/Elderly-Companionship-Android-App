@@ -203,7 +203,7 @@ public class FriendsFinder extends AppCompatActivity {
     public void constructSharedPreferences() {
 
         String key = "message";
-        message = "There are no friends with " + spinnerValue + " hobby registered yet";
+        message = "There are no friends with " + spinnerValue + " hobby found";
 
         // Create object of Shared Preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
