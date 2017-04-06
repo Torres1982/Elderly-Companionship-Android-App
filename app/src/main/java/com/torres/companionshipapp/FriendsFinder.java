@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FriendsFinder extends AppCompatActivity {
 
@@ -33,6 +37,8 @@ public class FriendsFinder extends AppCompatActivity {
     FirebaseAuth firebaseAuthentication;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
+    ListView friendsListView;
+    List<String> friendsArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,10 @@ public class FriendsFinder extends AppCompatActivity {
         // Get reference of the objects from the friends_finder.xml file
         findFriendsButton = (Button)findViewById(R.id.button_find_friends);
         spinner = (Spinner) findViewById(R.id.hobby_spinner);
+        friendsListView = (ListView) findViewById(R.id.list_view);
+
+        // Create an Array List of Friends details
+        friendsArrayList = new ArrayList<>();
 
         // Call the supportive methods
         setUpActionBar();
@@ -131,11 +141,17 @@ public class FriendsFinder extends AppCompatActivity {
 
                 //String hobby;
                 String databaseUser;
+                String databaseEmail;
                 boolean isHobbyFound = false;
+
+                // Clear the content of the Array List before displaying a new set of rows
+                friendsArrayList.clear();
 
                 // Iterate through the database
                 for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
 
+                    // Get User email from Firebase database
+                    databaseEmail = myDatabase.child("email").getValue(String.class);
                     // Get User name from Firebase database
                     databaseUser = myDatabase.child("username").getValue(String.class);
                     // Get User hobby from Firebase database
@@ -143,10 +159,13 @@ public class FriendsFinder extends AppCompatActivity {
 
                     // Display users' details with matching hobby
                     if (spinnerValue.equals(hobby)) {
-                        Toast.makeText(FriendsFinder.this, databaseUser + " " + hobby, Toast.LENGTH_LONG).show();
+                        // Add Friends details to Array List
+                        friendsArrayList.add(databaseUser + "\n" + databaseEmail + "\n" + hobby);
+
                         isHobbyFound = true;
                     }
                 }
+                createListView();
 
                 if(isHobbyFound) {
                     isHobbyFound = false;
@@ -178,7 +197,7 @@ public class FriendsFinder extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    // ******************** Create Shared Preferences *************************************************
+    // ******************** Create Shared Preferences **********************************************
     // ******************** Send the title for the Custom Dialog ***********************************
     // *********************************************************************************************
     public void constructSharedPreferences() {
@@ -194,5 +213,13 @@ public class FriendsFinder extends AppCompatActivity {
         editor.putString(key, message);
         // Commit the Edit
         editor.apply();
+    }
+
+    // *********************************************************************************************
+    // ******************** Create a List View with Friends details ********************************
+    // *********************************************************************************************
+    public void createListView() {
+        // Set Array Adapter to create a Scrollable List View
+        friendsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, friendsArrayList));
     }
 }
