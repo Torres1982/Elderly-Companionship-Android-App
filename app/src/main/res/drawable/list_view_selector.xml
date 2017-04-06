@@ -1,0 +1,18 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient android:angle="180"> </gradient>
+
+    <!-- Add the background color -->
+    <solid android:color="@color/dark_grey" />
+
+    <!-- Add curly edges to the border -->
+    <corners android:radius="@dimen/four_dp"> </corners>
+
+    <!-- Style the border -->
+    <stroke
+        android:color="@color/reseneWhite"
+        android:width="2dp">
+    </stroke>
+
+</shape>
