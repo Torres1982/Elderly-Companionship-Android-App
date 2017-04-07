@@ -1,5 +1,6 @@
 package com.torres.companionshipapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -7,11 +8,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,8 +34,11 @@ public class FriendsFinder extends AppCompatActivity {
     Spinner spinner;
     String message;
     String hobby;
-    Button findFriendsButton;
     String userId;
+    String userEmailFromSession;
+    String databaseUser;
+    String databaseEmail;
+    Button findFriendsButton;
     FirebaseAuth firebaseAuthentication;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
@@ -61,6 +67,7 @@ public class FriendsFinder extends AppCompatActivity {
 
         // Call the methods with associated Listeners
         addListenerToFindFriendsButton();
+        getClickedValueFromListView();
     }
 
     // *********************************************************************************************
@@ -71,13 +78,10 @@ public class FriendsFinder extends AppCompatActivity {
         findFriendsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View view) {
 
-                // Get the value from the selected dropdown list
-                spinnerValue = String.valueOf(spinner.getSelectedItem());
+            // Get the value from the selected dropdown list
+            spinnerValue = String.valueOf(spinner.getSelectedItem());
 
-                getUserDetailsFromFirebaseDatabase();
-
-                //String chosenValue = "Value chosen: ";
-                //Toast.makeText(FriendsFinder.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
+            getUserDetailsFromFirebaseDatabase();
             }
         });
     }
@@ -129,9 +133,11 @@ public class FriendsFinder extends AppCompatActivity {
         // Get the Firebase User instance
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Assign Firebase User Id for the user
         if (firebaseUser != null) {
+            // Assign Firebase User Id for the user
             userId = firebaseUser.getUid();
+            // Get the Firebase User email from current session
+            userEmailFromSession = firebaseUser.getEmail();
         }
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -139,8 +145,6 @@ public class FriendsFinder extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //String hobby;
-                String databaseUser;
-                String databaseEmail;
                 boolean isHobbyFound = false;
 
                 // Clear the content of the Array List before displaying a new set of rows
@@ -158,9 +162,17 @@ public class FriendsFinder extends AppCompatActivity {
 
                     // Display users' details with matching hobby
                     if (spinnerValue.equals(hobby)) {
-                        // Add Friends details to Array List
-                        friendsArrayList.add(databaseUser + "\n" + databaseEmail + "\n" + hobby);
-
+                        // Avoid adding currently logged in user to list of friends
+                        if (userEmailFromSession.equals(databaseEmail)) {
+                            // Nothing to do here
+                            // Example: Anna is a currently logged in user and we do not want to
+                            // add Anna to her list of friends
+                        }
+                        else {
+                            String friend = "Click to add to your Friends:";
+                            // Add Friends details to Array List
+                            friendsArrayList.add(friend + "\n" + databaseUser + "\n" + databaseEmail + "\n" + hobby);
+                        }
                         isHobbyFound = true;
                     }
                 }
@@ -220,5 +232,38 @@ public class FriendsFinder extends AppCompatActivity {
     public void createListView() {
         // Set Array Adapter to create a Scrollable List View
         friendsListView.setAdapter(new ArrayAdapter<>(this, R.layout.custom_simple_list_item, friendsArrayList));
+    }
+
+    // *********************************************************************************************
+    // ******************** Get the Value from Selected List View **********************************
+    // *********************************************************************************************
+    public void getClickedValueFromListView() {
+
+        friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedValue =(String) parent.getItemAtPosition(position);
+                Toast.makeText(FriendsFinder.this, selectedValue, Toast.LENGTH_LONG).show();
+
+                redirectToFriendsListIntent();
+            }
+        });
+    }
+
+    // *********************************************************************************************
+    // ******************** Redirect User to Friends List activity *********************************
+    // *********************************************************************************************
+    public void redirectToFriendsListIntent() {
+
+        // Prepare the intent and send the username to Profile Page activity
+        Intent friendsListIntent = new Intent (getApplicationContext(), FriendsList.class);
+        startActivity(friendsListIntent);
+        finish();
+    }
+
+    // *********************************************************************************************
+    // ******************** Redirect User to Friends List activity *********************************
+    // *********************************************************************************************
+    public void saveFriendsToYourFriendsList() {
+
     }
 }
