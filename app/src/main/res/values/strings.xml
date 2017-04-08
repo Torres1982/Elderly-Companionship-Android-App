@@ -9,6 +9,7 @@
     <string name="main_activity_login_button"> Go To Login </string>
     <string name="main_activity_register_button"> Go To Register </string>
     <string name="add_hobby_button"> Add Your Hobby </string>
+    <string name="add_age_button"> Add Your Age </string>
     <string name="add_details_button"> Add Your Details </string>
     <string name="choose_hobby"> Choose Your Hobby </string>
     <string name="map_show_places"> Show Places on Map </string>
