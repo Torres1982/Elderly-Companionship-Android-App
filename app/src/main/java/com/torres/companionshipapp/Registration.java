@@ -39,7 +39,6 @@ public class Registration extends AppCompatActivity {
     Button registerButton;
     String username;
     String email;
-    String hobby;
     String password;
     String message;
     String userId;
@@ -52,6 +51,7 @@ public class Registration extends AppCompatActivity {
     DatabaseReference databaseReference;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
+    private boolean isValidatedWhitespace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,22 +91,19 @@ public class Registration extends AppCompatActivity {
                 password = registrationPassword.getText().toString().trim();
                 username = name.getText().toString().trim();
 
-                final int passwordLength = 4;
+                final int passwordLength = 5;
                 String emailWarning = "Enter email address";
                 String passwordWarning = "Enter password";
                 String nameWarning = "Enter your name";
                 String passwordTooShort = "Password must have " + passwordLength + " or more characters";
                 String validateOnlyLetters = "Use letters only";
-                String validateEmailFormat = "Use correct email format: example@gmail.com";
-
-                // Username validation
-                //validateInputUsername(username);
+                String validateEmailFormat = "Use correct email format: name.surname@gmail.com";
+                String validateWhiteSpace = "You cannot use spaces with your name";
 
                 // Email Edit Text field has been left empty
                 if (TextUtils.isEmpty(email)) {
                     message = emailWarning;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), emailWarning, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -117,7 +114,6 @@ public class Registration extends AppCompatActivity {
                 if (!isValidatedEmail) {
                     message = validateEmailFormat;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), validateEmailFormat, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -125,7 +121,6 @@ public class Registration extends AppCompatActivity {
                 if (TextUtils.isEmpty(password)) {
                     message = passwordWarning;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), passwordWarning, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -133,7 +128,6 @@ public class Registration extends AppCompatActivity {
                 if (password.length() < passwordLength) {
                     message = passwordTooShort;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), passwordTooShort, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -141,18 +135,25 @@ public class Registration extends AppCompatActivity {
                 if (TextUtils.isEmpty(username)) {
                     message = nameWarning;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), nameWarning, Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // User name validation (matcher plus pattern)
+                // User name validation (detect whitespaces)
+                validateWhitespace();
+
+                if (!isValidatedWhitespace) {
+                    message = validateWhiteSpace;
+                    showDialog();
+                    return;
+                }
+
+                // User name validation (to use only letters)
                 validateInputUsername();
 
                 // User name input field contains non-alphabetical values
                 if (!isValidatedUsername) {
                     message = validateOnlyLetters;
                     showDialog();
-                    //Toast.makeText(getApplicationContext(), validateOnlyLetters, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -214,6 +215,19 @@ public class Registration extends AppCompatActivity {
 
         // Check if matcher matches the pattern (regular expression)
         isValidatedUsername = matcher.matches();
+    }
+
+    // *********************************************************************************************
+    // ******************** Validate whitespace with Matcher and Pattern ***************************
+    // *********************************************************************************************
+    public void validateWhitespace() {
+
+        String space = "\\s";
+
+        Pattern whitespace = Pattern.compile(space);
+        Matcher matcher = whitespace.matcher(username);
+
+        isValidatedWhitespace = matcher.matches();
     }
 
     // *********************************************************************************************
@@ -335,7 +349,9 @@ public class Registration extends AppCompatActivity {
         String key1 = "username";
         String key2 = "email";
         String key3 = "hobby";
-        hobby = "Dummy";
+        String key4 = "age";
+        String hobby = "Dummy";
+        String age = "Dummy";
 
         // Get the Database reference
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
@@ -359,6 +375,7 @@ public class Registration extends AppCompatActivity {
         userDetailsHashMap.put(key1, username);
         userDetailsHashMap.put(key2, email);
         userDetailsHashMap.put(key3, hobby);
+        userDetailsHashMap.put(key4, age);
 
         // Save User's details in the Firebase database (at root "users")
         databaseReference.child("users").child(userId).setValue(userDetailsHashMap);
