@@ -205,7 +205,7 @@ public class Registration extends AppCompatActivity {
         // Check if matcher matches the pattern (regular expression)
         isValidatedUsername = matcher.matches();
     }
-    
+
     // *********************************************************************************************
     // ******************** Validate the username with Matcher and Pattern *************************
     // *********************************************************************************************
