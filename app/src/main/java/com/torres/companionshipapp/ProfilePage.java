@@ -75,8 +75,8 @@ public class ProfilePage extends AppCompatActivity {
         addListenerToFindFriendsButton();
         addListenerToFindEventsButton();
         addListenerToLogOutButton();
-        addListenerToAddHobbyButton();
-        addListenerToDeleteHobbyButton();
+        addListenerToAddDetailsButton();
+        addListenerToShowOnMapButton();
     }
 
     // *********************************************************************************************
@@ -124,11 +124,11 @@ public class ProfilePage extends AppCompatActivity {
     // ******************** Register Listener for the Add Hobby Button *****************************
     // ******************** Redirect to the HobbyAdd page ******************************************
     // *********************************************************************************************
-    public void addListenerToAddHobbyButton () {
+    public void addListenerToAddDetailsButton () {
         addHobbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), HobbyAdd.class);
+                Intent intent = new Intent (getApplicationContext(), DetailUpdater.class);
                 startActivity(intent);
             }
         });
@@ -138,7 +138,7 @@ public class ProfilePage extends AppCompatActivity {
     // ******************** Register Listener for the Delete Hobby Button **************************
     // ******************** Redirect to the HobbyDelete page ***************************************
     // *********************************************************************************************
-    public void addListenerToDeleteHobbyButton () {
+    public void addListenerToShowOnMapButton () {
         deleteHobbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
