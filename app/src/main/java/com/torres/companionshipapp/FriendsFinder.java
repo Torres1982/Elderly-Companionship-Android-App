@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,8 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FriendsFinder extends AppCompatActivity {
 
@@ -38,6 +40,16 @@ public class FriendsFinder extends AppCompatActivity {
     String userEmailFromSession;
     String databaseUser;
     String databaseEmail;
+    String age;
+    String selectedValue;
+    String clearedUser;
+    String clearedAge;
+    String clearedEmail;
+    String clearedHobby;
+    String tokenUser;
+    String tokenAge;
+    String tokenEmail;
+    String tokenHobby;
     Button findFriendsButton;
     FirebaseAuth firebaseAuthentication;
     FirebaseUser firebaseUser;
@@ -159,6 +171,8 @@ public class FriendsFinder extends AppCompatActivity {
                     databaseUser = myDatabase.child("username").getValue(String.class);
                     // Get User hobby from Firebase database
                     hobby = myDatabase.child("hobby").getValue(String.class);
+                    // Get User age from Firebase database
+                    age = myDatabase.child("age").getValue(String.class);
 
                     // Display users' details with matching hobby
                     if (spinnerValue.equals(hobby)) {
@@ -171,7 +185,7 @@ public class FriendsFinder extends AppCompatActivity {
                         else {
                             String friend = "Click to add to your Friends:";
                             // Add Friends details to Array List
-                            friendsArrayList.add(friend + "\n" + databaseUser + "\n" + databaseEmail + "\n" + hobby);
+                            friendsArrayList.add(friend + " \n" + databaseUser + " \n" + age + " \n" + databaseEmail + " \n" + hobby);
                         }
                         isHobbyFound = true;
                     }
@@ -241,12 +255,50 @@ public class FriendsFinder extends AppCompatActivity {
 
         friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedValue =(String) parent.getItemAtPosition(position);
-                Toast.makeText(FriendsFinder.this, selectedValue, Toast.LENGTH_LONG).show();
+                selectedValue = (String) parent.getItemAtPosition(position);
+                //Toast.makeText(FriendsFinder.this, selectedValue, Toast.LENGTH_LONG).show();
 
+                tokenizeSelectedValueFromListView(selectedValue);
+                addFriendToFriendListFirebaseDb();
                 redirectToFriendsListIntent();
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Split the Selected value from the List View ****************************
+    // *********************************************************************************************
+    public void tokenizeSelectedValueFromListView(String value) {
+
+        String [] tokenStrings = value.split(" ");
+
+        for (int i = 0; i < tokenStrings.length; i++) {
+            Toast.makeText(FriendsFinder.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
+
+            // Assign the values from the array to user detail fields
+            tokenUser = tokenStrings[6];
+            tokenAge = tokenStrings[7];
+            tokenEmail = tokenStrings[8];
+            tokenHobby = tokenStrings[9];
+
+            removeSpacesFromTokenizedStrings();
+
+            databaseUser = clearedUser;
+            age = clearedAge;
+            databaseEmail = clearedEmail;
+            hobby = clearedHobby;
+        }
+    }
+
+    // *********************************************************************************************
+    // ******************** Remove "\n" characters from the Strings ********************************
+    // *********************************************************************************************
+    public void removeSpacesFromTokenizedStrings() {
+
+        clearedUser = tokenUser.replace("\n", "");
+        clearedAge = tokenAge.replace("\n", "");
+        clearedEmail = tokenEmail.replace("\n", "");
+        clearedHobby = tokenHobby.replace("\n", "");
     }
 
     // *********************************************************************************************
@@ -261,9 +313,41 @@ public class FriendsFinder extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    // ******************** Redirect User to Friends List activity *********************************
+    // ******************** Save Friend with details to Database ***********************************
     // *********************************************************************************************
-    public void saveFriendsToYourFriendsList() {
+    public void addFriendToFriendListFirebaseDb() {
 
+        // Values used for the Hash Map (to save to Firebase database)
+        String key1 = "username";
+        String key2 = "age";
+        String key3 = "email";
+        String key4 = "hobby";
+
+        // Get the Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
+
+        // Create a Hash Map of Friends' details
+        Map<String, String> friendsDetailsHashMap = new HashMap<>();
+
+        // Get the Firebase User instance
+        firebaseUser = firebaseAuthentication.getCurrentUser();
+
+        // Retrieve Firebase User Id for currently logged in user
+        if (firebaseUser != null) {
+            userId = firebaseUser.getUid();
+        }
+        else {
+            // More likely it will not happen
+            Toast.makeText(FriendsFinder.this, "Empty User Value!", Toast.LENGTH_LONG).show();
+        }
+
+        // Put User's details to the Hash Map
+        friendsDetailsHashMap.put(key1, databaseUser);
+        friendsDetailsHashMap.put(key2, age);
+        friendsDetailsHashMap.put(key3, databaseEmail);
+        friendsDetailsHashMap.put(key4, hobby);
+
+        // Save User's details in the Firebase database (at root "friends")
+        databaseReference.child("friends").child(userId).push().setValue(friendsDetailsHashMap);
     }
 }
