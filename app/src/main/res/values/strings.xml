@@ -12,6 +12,7 @@
     <string name="add_age_button"> Add Your Age </string>
     <string name="add_details_button"> Add Your Details </string>
     <string name="choose_hobby"> Choose Your Hobby </string>
+    <string name="choose_age"> Choose Your Age </string>
     <string name="map_show_places"> Show Places on Map </string>
     <string name="choose_place_on_map"> Choose the Place </string>
     <string name="find_friends_button"> Find Friends </string>
@@ -80,6 +81,18 @@
         <item> Coffee Shop </item>
         <item> Museum </item>
         <item> Theatre </item>
+    </string-array>
+
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Array of ranges of an age **************************************** -->
+    <!-- *************************************************************************************** -->
+    <string-array name = "age_array">
+        <item> 56 to 60 </item>
+        <item> 61 to 65 </item>
+        <item> 66 to 70 </item>
+        <item> 71 to 75 </item>
+        <item> 76 to 80 </item>
+        <item> 81 and more </item>
     </string-array>
 
 </resources>
