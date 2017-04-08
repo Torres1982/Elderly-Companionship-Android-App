@@ -51,7 +51,6 @@ public class Registration extends AppCompatActivity {
     DatabaseReference databaseReference;
     private boolean isValidatedUsername;
     private boolean isValidatedEmail;
-    private boolean isValidatedWhitespace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +97,6 @@ public class Registration extends AppCompatActivity {
                 String passwordTooShort = "Password must have " + passwordLength + " or more characters";
                 String validateOnlyLetters = "Use letters only";
                 String validateEmailFormat = "Use correct email format: name.surname@gmail.com";
-                String validateWhiteSpace = "You cannot use spaces with your name";
 
                 // Email Edit Text field has been left empty
                 if (TextUtils.isEmpty(email)) {
@@ -134,15 +132,6 @@ public class Registration extends AppCompatActivity {
                 // Username Edit Text field has been left empty
                 if (TextUtils.isEmpty(username)) {
                     message = nameWarning;
-                    showDialog();
-                    return;
-                }
-
-                // User name validation (detect whitespaces)
-                validateWhitespace();
-
-                if (!isValidatedWhitespace) {
-                    message = validateWhiteSpace;
                     showDialog();
                     return;
                 }
@@ -216,20 +205,7 @@ public class Registration extends AppCompatActivity {
         // Check if matcher matches the pattern (regular expression)
         isValidatedUsername = matcher.matches();
     }
-
-    // *********************************************************************************************
-    // ******************** Validate whitespace with Matcher and Pattern ***************************
-    // *********************************************************************************************
-    public void validateWhitespace() {
-
-        String space = "\\s";
-
-        Pattern whitespace = Pattern.compile(space);
-        Matcher matcher = whitespace.matcher(username);
-
-        isValidatedWhitespace = matcher.matches();
-    }
-
+    
     // *********************************************************************************************
     // ******************** Validate the username with Matcher and Pattern *************************
     // *********************************************************************************************
