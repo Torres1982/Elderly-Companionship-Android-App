@@ -87,12 +87,37 @@
     <!-- ******************** Array of ranges of an age **************************************** -->
     <!-- *************************************************************************************** -->
     <string-array name = "age_array">
-        <item> 56 to 60 </item>
-        <item> 61 to 65 </item>
-        <item> 66 to 70 </item>
-        <item> 71 to 75 </item>
-        <item> 76 to 80 </item>
-        <item> 81 and more </item>
+        <item> 60 </item>
+        <item> 61 </item>
+        <item> 62 </item>
+        <item> 63 </item>
+        <item> 64 </item>
+        <item> 65 </item>
+        <item> 66 </item>
+        <item> 67 </item>
+        <item> 68 </item>
+        <item> 69 </item>
+        <item> 70 </item>
+        <item> 71 </item>
+        <item> 72 </item>
+        <item> 73 </item>
+        <item> 74 </item>
+        <item> 75 </item>
+        <item> 76 </item>
+        <item> 77 </item>
+        <item> 78 </item>
+        <item> 79 </item>
+        <item> 80 </item>
+        <item> 81 </item>
+        <item> 82 </item>
+        <item> 83 </item>
+        <item> 84 </item>
+        <item> 85 </item>
+        <item> 86 </item>
+        <item> 87 </item>
+        <item> 88 </item>
+        <item> 89 </item>
+        <item> 90 </item>
     </string-array>
 
 </resources>
