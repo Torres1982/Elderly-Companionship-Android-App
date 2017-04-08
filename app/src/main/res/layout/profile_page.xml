@@ -26,7 +26,7 @@
         <Button
             android:layout_margin="@dimen/sixteen_dp"
             android:id="@+id/button_add_hobby"
-            android:text="@string/add_hobby_button"
+            android:text="@string/add_details_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
