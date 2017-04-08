@@ -40,7 +40,7 @@ public class DetailUpdater extends AppCompatActivity {
         addHobbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), AgeAdd.class);
+                Intent intent = new Intent (getApplicationContext(), HobbyAdd.class);
                 startActivity(intent);
             }
         });
@@ -51,10 +51,10 @@ public class DetailUpdater extends AppCompatActivity {
     // ******************** Redirect to the Age Add Activity ***************************************
     // *********************************************************************************************
     public void addListenerToAddAgeButton () {
-        addHobbyButton.setOnClickListener(new View.OnClickListener() {
+        addAgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), HobbyAdd.class);
+                Intent intent = new Intent (getApplicationContext(), AgeAdd.class);
                 startActivity(intent);
             }
         });
