@@ -273,7 +273,7 @@ public class FriendsFinder extends AppCompatActivity {
         String [] tokenStrings = value.split(" ");
 
         for (int i = 0; i < tokenStrings.length; i++) {
-            Toast.makeText(FriendsFinder.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
+            //Toast.makeText(FriendsFinder.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
 
             // Assign the values from the array to user detail fields
             tokenUser = tokenStrings[6];
