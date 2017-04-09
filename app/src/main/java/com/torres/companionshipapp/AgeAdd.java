@@ -112,7 +112,7 @@ public class AgeAdd extends AppCompatActivity {
     public void constructSharedPreferences() {
 
         String key = "message";
-        message = " Your age: " + spinnerValue + " has been added to the list";
+        message = "Your age: " + spinnerValue + " has been added to the list";
 
         // Create object of Shared Preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
