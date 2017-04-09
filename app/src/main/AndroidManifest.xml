@@ -28,6 +28,7 @@
         <activity android:name=".FriendsList"> </activity>
         <activity android:name=".DetailUpdater"> </activity>
         <activity android:name=".AgeAdd"> </activity>
+        <activity android:name=".DetailsHolder"> </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
