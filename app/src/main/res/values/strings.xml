@@ -22,6 +22,7 @@
     <string name="find_friends_button"> Find Friends </string>
     <string name="events_button"> Events </string>
     <string name="find_events_by_name_button"> Find Events by Name </string>
+    <string name="find_events_by_date_button"> Find Events by Date </string>
     <string name="logout_button"> Log Out </string>
     <string name="find_friend_by_hobby"> Find Friends by Hobby </string>
     <string name="find_friend_by_age"> Find Friends by Age </string>
