@@ -37,7 +37,6 @@ public class EventsFinderName extends AppCompatActivity {
 
     // *********************************************************************************************
     // ******************** Register Listener for the Find Friends Button **************************
-    // ******************** Redirect ... ***********************************************************
     // *********************************************************************************************
     public void addListenerToFindEventsButton () {
         findEventsButton.setOnClickListener(new View.OnClickListener() {
