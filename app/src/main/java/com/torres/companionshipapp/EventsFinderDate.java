@@ -17,11 +17,7 @@ public class EventsFinderDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_finder_date);
-
-        // Call Date Picker Dialog Fragment
-        DateDialog.DatePickerFragment fragment = new DateDialog.DatePickerFragment();
-        fragment.show(getSupportFragmentManager(), "date");
-
+        
         // Retrieve the reference of the objects from the profile_page.xml file
         displayDateTextView = (TextView) findViewById(R.id.today_date);
         findEventsByDateButton = (Button)findViewById(R.id.find_events_by_date);
