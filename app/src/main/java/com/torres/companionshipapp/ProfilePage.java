@@ -101,7 +101,7 @@ public class ProfilePage extends AppCompatActivity {
         findEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), EventsFinder.class);
+                Intent intent = new Intent (getApplicationContext(), EventsHolder.class);
                 startActivity(intent);
             }
         });
