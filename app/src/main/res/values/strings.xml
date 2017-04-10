@@ -20,7 +20,7 @@
     <string name="show_places_map"> Show Places on Map </string>
     <string name="choose_place_on_map"> Choose the Place </string>
     <string name="find_friends_button"> Find Friends </string>
-    <string name="find_events_button"> Find Events </string>
+    <string name="events_button"> Events </string>
     <string name="logout_button"> Log Out </string>
     <string name="find_friend_by_hobby"> Find Friends by Hobby </string>
     <string name="find_friend_by_age"> Find Friends by Age </string>
