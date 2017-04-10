@@ -23,6 +23,7 @@
     <string name="find_events_button"> Find Events </string>
     <string name="logout_button"> Log Out </string>
     <string name="find_friend_by_hobby"> Find Friends by Hobby </string>
+    <string name="find_friend_by_age"> Find Friends by Age </string>
     <string name="find_event"> Find Events to Attend </string>
     <string name="dialog_log_out_message"> Do you want to exit ? </string>
     <string name="dialog_hobby_message"> Enter your hobby </string>
