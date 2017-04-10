@@ -59,7 +59,7 @@
         <Button
             android:layout_margin="@dimen/sixteen_dp"
             android:id="@+id/profile_page_button_find_events"
-            android:text="@string/find_events_button"
+            android:text="@string/events_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
