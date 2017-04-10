@@ -23,7 +23,7 @@ public class Map extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_places);
 
-        // Get reference of the objects from the friends_finder.xml file
+        // Get reference of the objects from the friends_finder_hobby_hobby.xml file
         showOnMapButton = (Button)findViewById(R.id.button_show_map);
         spinner = (Spinner) findViewById(R.id.map_spinner);
 
