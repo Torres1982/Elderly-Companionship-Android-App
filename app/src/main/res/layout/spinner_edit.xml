@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textSize="@dimen/thirty_sp"
+    android:gravity="center"
     android:textColor="@color/reseneWhite"
     android:background="@drawable/spinner_styled"
     android:padding="@dimen/eight_dp" />
