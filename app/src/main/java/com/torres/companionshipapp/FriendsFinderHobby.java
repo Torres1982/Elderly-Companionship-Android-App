@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +28,7 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FriendsFinder extends AppCompatActivity {
+public class FriendsFinderHobby extends AppCompatActivity {
 
     // Declare global variables and objects
     String spinnerValue;
@@ -256,7 +255,7 @@ public class FriendsFinder extends AppCompatActivity {
         friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedValue = (String) parent.getItemAtPosition(position);
-                //Toast.makeText(FriendsFinder.this, selectedValue, Toast.LENGTH_LONG).show();
+                //Toast.makeText(FriendsFinderHobby.this, selectedValue, Toast.LENGTH_LONG).show();
 
                 tokenizeSelectedValueFromListView(selectedValue);
                 addFriendToFriendListFirebaseDb();
@@ -273,7 +272,7 @@ public class FriendsFinder extends AppCompatActivity {
         String [] tokenStrings = value.split(" ");
 
         for (int i = 0; i < tokenStrings.length; i++) {
-            //Toast.makeText(FriendsFinder.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
+            //Toast.makeText(FriendsFinderHobby.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
 
             // Assign the values from the array to user detail fields
             tokenUser = tokenStrings[6];
@@ -338,7 +337,7 @@ public class FriendsFinder extends AppCompatActivity {
         }
         else {
             // More likely it will not happen
-            Toast.makeText(FriendsFinder.this, "Empty User Value!", Toast.LENGTH_LONG).show();
+            Toast.makeText(FriendsFinderHobby.this, "Empty User Value!", Toast.LENGTH_LONG).show();
         }
 
         // Put User's details to the Hash Map
