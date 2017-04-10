@@ -115,14 +115,18 @@ public class FriendsList extends AppCompatActivity {
 
                     String friend = "Click to send email to:";
                     friendsArrayList.add(friend + " \n" + databaseUser + " \n" + age + " \n" + databaseEmail + " \n" + hobby);
-                    Toast.makeText(FriendsList.this, databaseUser + "\n" + databaseEmail + "\n" + age + "\n" + hobby, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(FriendsList.this, databaseUser + "\n" + databaseEmail + "\n" + age + "\n" + hobby, Toast.LENGTH_LONG).show();
                 }
                 createListView();
+
+                if (friendsArrayList.isEmpty()) {
+                    showDialog();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Nothing to do here
             }
         });
     }
