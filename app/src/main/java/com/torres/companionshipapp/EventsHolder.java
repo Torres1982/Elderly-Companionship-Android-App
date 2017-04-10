@@ -70,7 +70,8 @@ public class EventsHolder extends AppCompatActivity {
         showEventsByDateButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent (getApplicationContext(), EventsFinderDate.class);
+                startActivity(intent);
             }
         });
     }
