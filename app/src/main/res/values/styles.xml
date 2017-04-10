@@ -42,4 +42,12 @@
         <item name="android:drawSelectorOnTop"> false </item>
     </style>
 
+    <!-- *************************************************************************************** -->
+    <!-- ********************* Style the Date Picker ******************************************* -->
+    <!-- *************************************************************************************** -->
+    <style name="AppTheme.WhiteAccent.DatePicker">
+        <item name="android:textSize"> 35sp </item>
+        <item name="android:textColorPrimary"> @color/yellow </item>
+    </style>
+
 </resources>
