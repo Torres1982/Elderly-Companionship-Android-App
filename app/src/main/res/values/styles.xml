@@ -47,7 +47,7 @@
     <!-- *************************************************************************************** -->
     <style name="AppTheme.WhiteAccent.DatePicker">
         <item name="android:textSize"> 35sp </item>
-        <item name="android:textColorPrimary"> @color/yellow </item>
+        <item name="android:textColorPrimary"> @color/reseneWhite </item>
     </style>
 
 </resources>
