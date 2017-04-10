@@ -33,7 +33,6 @@
         <activity android:name=".AgeAdd"> </activity>
         <activity android:name=".DetailsHolder"> </activity>
         <activity android:name=".EventsHolder"> </activity>
-        <activity android:name=".DateDialog"> </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
