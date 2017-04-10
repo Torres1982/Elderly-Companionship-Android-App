@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EventsFinder extends AppCompatActivity {
+public class EventsFinderName extends AppCompatActivity {
 
     // Declare global variables and objects
     String spinnerValue;
@@ -47,7 +47,7 @@ public class EventsFinder extends AppCompatActivity {
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
 
                 String chosenValue = "Value chosen: ";
-                Toast.makeText(EventsFinder.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
+                Toast.makeText(EventsFinderName.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
             }
         });
     }
