@@ -1,12 +1,15 @@
 package com.torres.companionshipapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +36,11 @@ public class FriendsList extends AppCompatActivity {
     String age;
     String hobby;
     String message;
+    String selectedValue;
+    String clearedUser;
+    String clearedEmail;
+    String tokenUser;
+    String tokenEmail;
     FirebaseAuth firebaseAuthentication;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
@@ -55,7 +63,11 @@ public class FriendsList extends AppCompatActivity {
 
         // Call the supportive methods
         setUpActionBar();
+
+        // Call the methods with associated Listeners
         getFriendsDetailsFromFirebaseDatabase();
+        getClickedValueFromListView();
+        //tokenizeSelectedValueFromListView(selectedValue);
     }
 
     // *********************************************************************************************
@@ -268,5 +280,73 @@ public class FriendsList extends AppCompatActivity {
     public void createListView() {
         // Set Array Adapter to create a Scrollable List View
         friendsListView.setAdapter(new ArrayAdapter<>(this, R.layout.custom_simple_list_item, friendsArrayList));
+    }
+
+    // *********************************************************************************************
+    // ******************** Get the Value from Selected List View **********************************
+    // *********************************************************************************************
+    public void getClickedValueFromListView() {
+
+        friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedValue = (String) parent.getItemAtPosition(position);
+                //Toast.makeText(FriendsList.this, selectedValue, Toast.LENGTH_LONG).show();
+
+                tokenizeSelectedValueFromListView(selectedValue);
+
+                String [] addresses = {databaseEmail};
+                String subject = "Hello " + databaseUser;
+
+                // Below email address used for testing only to check for incoming emails
+                //String [] addresses = {"artur.sukiennik82@gmail.com"};
+
+                // Call the email intent
+                createGMail(addresses, subject);
+            }
+        });
+    }
+
+    // *********************************************************************************************
+    // ******************** Split the Selected value from the List View ****************************
+    // *********************************************************************************************
+    public void tokenizeSelectedValueFromListView(String value) {
+
+        String [] tokenStrings = value.split(" ");
+
+        for (int i = 0; i < tokenStrings.length; i++) {
+            //Toast.makeText(FriendsList.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
+
+            // Assign the values from the array to user detail fields
+            tokenUser = tokenStrings[5];
+            tokenEmail = tokenStrings[7];
+
+            removeSpacesFromTokenizedStrings();
+
+            databaseUser = clearedUser;
+            databaseEmail = clearedEmail;
+        }
+    }
+
+    // *********************************************************************************************
+    // ******************** Remove "\n" characters from the Strings ********************************
+    // *********************************************************************************************
+    public void removeSpacesFromTokenizedStrings() {
+
+        clearedUser = tokenUser.replace("\n", "");
+        clearedEmail = tokenEmail.replace("\n", "");
+    }
+
+    // *********************************************************************************************
+    // ******************** GMail intent ***********************************************************
+    // *********************************************************************************************
+    public void createGMail(String[] addresses, String subject) {
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
