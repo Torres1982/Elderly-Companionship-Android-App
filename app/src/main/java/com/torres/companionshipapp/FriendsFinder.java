@@ -54,7 +54,8 @@ public class FriendsFinder extends AppCompatActivity {
         findFriendsByAgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent (getApplicationContext(), FriendsFinderAge.class);
+                startActivity(intent);
             }
         });
     }
