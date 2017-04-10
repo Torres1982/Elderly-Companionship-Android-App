@@ -87,7 +87,7 @@ public class ProfilePage extends AppCompatActivity {
         findFriendsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), FriendsFinderHobby.class);
+                Intent intent = new Intent (getApplicationContext(), FriendsFinder.class);
                 startActivity(intent);
             }
         });
