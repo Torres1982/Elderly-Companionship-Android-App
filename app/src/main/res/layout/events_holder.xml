@@ -17,8 +17,8 @@
 
         <Button
             android:layout_margin="@dimen/sixteen_dp"
-            android:id="@+id/show_friends_button"
-            android:text="@string/show_friends"
+            android:id="@+id/create_event"
+            android:text="@string/create_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
@@ -28,8 +28,8 @@
 
         <Button
             android:layout_margin="@dimen/sixteen_dp"
-            android:id="@+id/places_map_button"
-            android:text="@string/show_places_map"
+            android:id="@+id/find_event_by_name"
+            android:text="@string/find_events_by_name_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
@@ -39,8 +39,8 @@
 
         <Button
             android:layout_margin="@dimen/sixteen_dp"
-            android:id="@+id/show_events_button"
-            android:text="@string/show_events"
+            android:id="@+id/find_event_by_date"
+            android:text="@string/find_events_by_date_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
