@@ -7,6 +7,16 @@
     android:background="@color/grey"
     tools:context="com.torres.companionshipapp.EventsFinderDate">
 
+    <TextView
+        android:id="@+id/text_view_date_chooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_chooser"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:id="@+id/find_events_by_date"
         android:text="@string/find_events_by_date_button"
@@ -22,41 +32,17 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/current_date"
-        android:textSize="28sp"
-        android:layout_width="wrap_content"
+    <DatePicker
+        android:theme="@style/AppTheme.WhiteAccent.DatePicker"
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/current_date"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignBaseline="@+id/today_date"
-        android:layout_alignBottom="@+id/today_date"
-        android:layout_alignLeft="@+id/text_view_date_chooser"
-        android:layout_alignStart="@+id/text_view_date_chooser" />
-
-    <TextView
-        android:id="@+id/today_date"
-        android:textSize="28sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="27dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/current_date"
-        android:layout_toEndOf="@+id/current_date"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp" />
-
-    <TextView
-        android:id="@+id/text_view_date_chooser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date_chooser"
-        android:textSize="28sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/current_date"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/date_picker_style"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_below="@+id/text_view_date_chooser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
 
 </RelativeLayout>
