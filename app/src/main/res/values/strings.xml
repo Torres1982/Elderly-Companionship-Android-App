@@ -35,6 +35,7 @@
     <string name="dialog_button_ok"> OK </string>
     <string name="list_of_friends"> List of Your Friends </string>
     <string name="date_chooser"> Choose the Date of Event to Attend </string>
+    <string name="current_date"> The Date Today is </string>
 
     <!-- KEYBOARD STRINGS -->
     <string name="keyboard_go"> Go </string>
