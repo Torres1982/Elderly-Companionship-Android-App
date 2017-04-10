@@ -59,12 +59,12 @@ public class FriendsFinderHobby extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.friends_finder);
+        setContentView(R.layout.friends_finder_hobby);
 
         // Get the Firebase authentication instance
         firebaseAuthentication = FirebaseAuth.getInstance();
 
-        // Get reference of the objects from the friends_finder.xml file
+        // Get reference of the objects from the friends_finder_hobby_hobby.xml file
         findFriendsButton = (Button)findViewById(R.id.button_find_friends);
         spinner = (Spinner) findViewById(R.id.hobby_spinner);
         friendsListView = (ListView) findViewById(R.id.list_view);
