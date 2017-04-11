@@ -83,7 +83,7 @@ public class EventSelectorDate extends AppCompatActivity {
     public void prepareIntent() {
 
         String key = "eventDate";
-        String eventDate = "day" + "-" + month + "-" + year;
+        String eventDate = day + "-" + month + "-" + year;
 
         // Prepare the intent and send the event name to next activity
         Intent eventIntent = new Intent (getApplicationContext(), EventSelectorDate.class);
