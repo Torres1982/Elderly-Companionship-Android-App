@@ -26,7 +26,7 @@ public class EventSelectorDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_selector_date);
 
-        // Retrieve the reference of the objects from the profile_page.xml file
+        // Retrieve the reference of the objects
         addEventDateButton = (Button)findViewById(R.id.select_events_by_date);
         datePicker = (DatePicker)findViewById(R.id.date_picker_event_selector);
 
