@@ -5,23 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context="com.torres.companionshipapp.EventsFinderName">
+    tools:context="com.torres.companionshipapp.EventSelectorName">
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/event_spinner"
+        android:id="@+id/add_event_name_spinner"
         android:entries="@array/event_array"
         android:layout_marginTop="@dimen/sixteen_dp"
-        android:layout_below="@+id/text_view_event"
+        android:layout_below="@+id/text_view_add_event_name"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_margin="@dimen/sixteen_dp"
-        android:id="@+id/text_view_event"
+        android:id="@+id/text_view_add_event_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/find_event"
+        android:text="@string/add_event_name"
         android:textSize="28sp"
         android:textColor="@android:color/black"
         android:layout_alignParentTop="true"
@@ -29,8 +29,8 @@
         android:layout_marginTop="@dimen/sixteen_dp" />
 
     <Button
-        android:id="@+id/button_find_events"
-        android:text="@string/find_events_by_name_button"
+        android:id="@+id/button_add_event_name"
+        android:text="@string/go_to_add_event_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
