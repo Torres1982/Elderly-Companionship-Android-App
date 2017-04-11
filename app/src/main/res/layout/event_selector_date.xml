@@ -11,7 +11,7 @@
         android:id="@+id/text_view_date_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/date_chooser"
+        android:text="@string/date_event_selector"
         android:textSize="28sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="36dp"
