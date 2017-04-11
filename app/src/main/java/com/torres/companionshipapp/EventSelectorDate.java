@@ -69,7 +69,7 @@ public class EventSelectorDate extends AppCompatActivity {
     // ******************** Retrieve the date from Date Picker *************************************
     // *********************************************************************************************
     public void getDateFromDatePicker() {
-        
+
         // Retrieve the values for day, month and year from a Date Picker
         day = datePicker.getDayOfMonth();
         // Month starts at 0 so we need to add 1
