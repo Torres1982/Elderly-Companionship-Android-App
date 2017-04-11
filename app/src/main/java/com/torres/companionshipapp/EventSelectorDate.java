@@ -91,8 +91,7 @@ public class EventSelectorDate extends AppCompatActivity {
         eventIntent.putExtra(key, eventDate);
         startActivity(eventIntent);
         finish();
-
-        Toast.makeText(getApplicationContext(), eventName + " " + eventDate, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), eventName + " " + eventDate, Toast.LENGTH_LONG).show();
     }
 
     // *********************************************************************************************
