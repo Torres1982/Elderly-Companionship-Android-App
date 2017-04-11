@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.torres.companionshipapp.EventsFinderName">
 
-</LinearLayout>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_spinner"
+        android:entries="@array/event_array"
+        android:layout_marginTop="@dimen/sixteen_dp"
+        android:layout_below="@+id/text_view_event"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_margin="@dimen/sixteen_dp"
+        android:id="@+id/text_view_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/find_event"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/sixteen_dp" />
+
+    <Button
+        android:id="@+id/button_find_events"
+        android:text="@string/find_events_by_name_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_radius"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/sixteen_dp"
+        android:layout_marginRight="@dimen/sixteen_dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
