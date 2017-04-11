@@ -23,7 +23,7 @@ public class EventsFinderName extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_finder_name);
 
-        // Get reference of the objects from the events_finder_name.xmle.xml file
+        // Get reference of the objects from the events_finder_name.xml file
         findEventsButton = (Button)findViewById(R.id.button_find_events);
         spinner = (Spinner) findViewById(R.id.event_spinner);
 
