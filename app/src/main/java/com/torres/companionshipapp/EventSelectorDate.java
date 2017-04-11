@@ -15,7 +15,7 @@ public class EventSelectorDate extends AppCompatActivity {
 
     // Declare global variables and objects
     String eventName;
-    String EVENT_NAME_KEY = "eventName";
+    final String EVENT_NAME_KEY = "eventName";
     int day;
     int month;
     int year;
