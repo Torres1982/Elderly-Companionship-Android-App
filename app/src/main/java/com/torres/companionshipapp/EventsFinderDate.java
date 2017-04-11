@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 public class EventsFinderDate extends AppCompatActivity {
 
+    // Declare global variables and objects
     TextView displayDateTextView;
     Button findEventsByDateButton;
     DatePicker datePicker;
