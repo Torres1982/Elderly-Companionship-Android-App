@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.torres.companionshipapp.EventSelectorTime">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/text_view_time_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_event_selector"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/select_events_by_time"
+        android:text="@string/go_to_add_event_venue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_radius"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/sixteen_dp"
+        android:layout_marginRight="@dimen/sixteen_dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <DatePicker
+        android:theme="@style/AppTheme.WhiteAccent.DatePicker"
+        android:id="@+id/date_picker_event_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/date_picker_style"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_below="@+id/text_view_time_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+</RelativeLayout>
