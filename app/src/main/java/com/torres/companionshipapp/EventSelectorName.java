@@ -56,7 +56,7 @@ public class EventSelectorName extends AppCompatActivity {
     // *********************************************************************************************
     public void prepareIntent() {
 
-        String key = "spinnerValue";
+        String key = "eventName";
 
         // Prepare the intent and send the event name to next activity
         Intent eventIntent = new Intent (getApplicationContext(), EventSelectorDate.class);
