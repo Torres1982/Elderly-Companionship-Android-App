@@ -62,7 +62,7 @@ public class EventSelectorDate extends AppCompatActivity {
 
         if (extras != null) {
             eventName = extras.getString(EVENT_NAME_KEY);
-            Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -86,11 +86,13 @@ public class EventSelectorDate extends AppCompatActivity {
         String eventDate = day + "-" + month + "-" + year;
 
         // Prepare the intent and send the event name to next activity
-        Intent eventIntent = new Intent (getApplicationContext(), EventSelectorDate.class);
+        Intent eventIntent = new Intent (getApplicationContext(), EventSelectorTime.class);
         eventIntent.putExtra(EVENT_NAME_KEY, eventName);
         eventIntent.putExtra(key, eventDate);
         startActivity(eventIntent);
         finish();
+
+        Toast.makeText(getApplicationContext(), eventName + " " + eventDate, Toast.LENGTH_LONG).show();
     }
 
     // *********************************************************************************************
