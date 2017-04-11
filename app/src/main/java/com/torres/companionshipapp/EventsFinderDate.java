@@ -37,10 +37,10 @@ public class EventsFinderDate extends AppCompatActivity {
         findEventsByDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View view) {
                 // Retrieve the values for day, month and year from a Date Picker
-                String day = "Day = " + datePicker.getDayOfMonth();
+                int day = datePicker.getDayOfMonth();
                 // Month starts at 0 so we need to add 1
-                String month = "Month = " + (datePicker.getMonth() + 1);
-                String year = "Year = " + datePicker.getYear();
+                int month = datePicker.getMonth() + 1;
+                int year = datePicker.getYear();
 
                 Toast.makeText(getApplicationContext(), day + "\n" + month + "\n" + year, Toast.LENGTH_LONG).show();
             }
