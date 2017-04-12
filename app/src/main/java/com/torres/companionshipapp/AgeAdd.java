@@ -57,7 +57,6 @@ public class AgeAdd extends AppCompatActivity {
         addMyAgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
                 showDialog();
