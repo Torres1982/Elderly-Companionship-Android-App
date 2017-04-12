@@ -37,7 +37,7 @@ public class AgeAdd extends AppCompatActivity {
         // Get the Firebase authentication instance
         firebaseAuthentication = FirebaseAuth.getInstance();
 
-        // Retrieve the reference of the objects from the hobby_add.xml file
+        // Retrieve the reference of the objects
         addMyAgeButton = (Button)findViewById(R.id.button_age_add);
         spinner = (Spinner) findViewById(R.id.age_add_spinner);
 
