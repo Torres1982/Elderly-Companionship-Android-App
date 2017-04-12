@@ -91,7 +91,7 @@ public class EventSelectorTime extends AppCompatActivity {
         String eventTime = hour + ":" + minute;
 
         // Prepare the intent and send the event name and date to next activity
-        Intent eventIntent = new Intent (getApplicationContext(), EventSelectorTime.class);
+        Intent eventIntent = new Intent (getApplicationContext(), EventSelectorVenue.class);
         eventIntent.putExtra(EVENT_NAME_KEY, eventName);
         eventIntent.putExtra(EVENT_DATE_KEY, eventDate);
         eventIntent.putExtra(key, eventTime);
