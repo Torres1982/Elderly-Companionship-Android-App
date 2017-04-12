@@ -6,14 +6,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +23,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.*;
+import java.util.Map;
 
 public class EventSelectorVenue extends AppCompatActivity {
 
@@ -228,7 +227,7 @@ public class EventSelectorVenue extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
 
         // Create a Hash Map of User's details
-        java.util.Map<String, String> userDetailsHashMap = new HashMap<>();
+        Map<String, String> userDetailsHashMap = new HashMap<>();
 
         // Put User's details to the Hash Map
         userDetailsHashMap.put(key1, eventDate);
