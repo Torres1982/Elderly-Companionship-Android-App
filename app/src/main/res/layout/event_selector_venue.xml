@@ -17,4 +17,55 @@
         android:layout_marginTop="36dp"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/create_event"
+        android:text="@string/create_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_radius"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/sixteen_dp"
+        android:layout_marginRight="@dimen/sixteen_dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/city_add_spinner"
+        android:entries="@array/city_array"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/text_view_venue_selector"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dublin_add_region_spinner"
+        android:entries="@array/dublin_regions_array"
+        android:layout_below="@+id/city_add_spinner"
+        android:layout_alignLeft="@+id/city_add_spinner"
+        android:layout_alignStart="@+id/city_add_spinner"
+        android:layout_marginTop="77dp" />
+
+    <EditText
+        android:hint="@string/event_street_hint"
+        android:id="@+id/edit_text_event_street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/red"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginBottom="42dp"
+        android:layout_above="@+id/create_event"
+        android:layout_alignLeft="@+id/create_event"
+        android:layout_alignStart="@+id/create_event"
+        android:layout_alignRight="@+id/create_event"
+        android:layout_alignEnd="@+id/create_event" />
+
 </RelativeLayout>
