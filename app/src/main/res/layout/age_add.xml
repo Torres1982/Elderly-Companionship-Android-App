@@ -8,7 +8,7 @@
     tools:context="com.torres.companionshipapp.AgeAdd">
 
     <Spinner
-        android:layout_width="@dimen/one_hundred_fifty_dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/age_add_spinner"
         android:entries="@array/age_array"
