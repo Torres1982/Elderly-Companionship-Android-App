@@ -181,4 +181,34 @@
         <item> Wicklow </item>
     </string-array>
 
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Array of Irish cities ******************************************** -->
+    <!-- *************************************************************************************** -->
+    <string-array name = "dublin_regions_array">
+        <item> Dublin 1 </item>
+        <item> Dublin 2 </item>
+        <item> Dublin 3 </item>
+        <item> Dublin 4 </item>
+        <item> Dublin 5 </item>
+        <item> Dublin 6 </item>
+        <item> Dublin 7 </item>
+        <item> Dublin 8 </item>
+        <item> Dublin 9 </item>
+        <item> Dublin 10 </item>
+        <item> Dublin 11 </item>
+        <item> Dublin 12 </item>
+        <item> Dublin 13 </item>
+        <item> Dublin 14 </item>
+        <item> Dublin 15 </item>
+        <item> Dublin 16 </item>
+        <item> Dublin 17 </item>
+        <item> Dublin 18 </item>
+        <item> Dublin 19 </item>
+        <item> Dublin 20 </item>
+        <item> Dublin 21 </item>
+        <item> Dublin 22 </item>
+        <item> Dublin 23 </item>
+        <item> Dublin 24 </item>
+    </string-array>
+
 </resources>
