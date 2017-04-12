@@ -39,6 +39,7 @@
     <string name="time_event_selector"> Set the Time of Event </string>
     <string name="venue_event_selector"> Set the Address of Event </string>
     <string name="add_event_name"> Add Event Name </string>
+    <string name="create_event"> Add Event </string>
     <string name="go_to_add_event_date"> Go To Add Event Date </string>
     <string name="go_to_add_event_time"> Go To Add Event Time </string>
     <string name="go_to_add_event_venue"> Go To Add Event Venue </string>
