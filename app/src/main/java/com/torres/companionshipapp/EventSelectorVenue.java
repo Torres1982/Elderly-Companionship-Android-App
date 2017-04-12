@@ -219,6 +219,7 @@ public class EventSelectorVenue extends AppCompatActivity {
         String key4 = "street";
         String key5 = "partaker";
         String key6 = "creator";
+        String key7 = "name";
         String defaultPartaker = "Partaker";
 
         // Get the Database reference
@@ -234,6 +235,7 @@ public class EventSelectorVenue extends AppCompatActivity {
         userDetailsHashMap.put(key4, eventStreet);
         userDetailsHashMap.put(key5, defaultPartaker);
         userDetailsHashMap.put(key6, databaseUser);
+        userDetailsHashMap.put(key7, eventName);
 
         // Save Event details in the Firebase database (at root "events")
         databaseReference.child("events").child(eventName).push().setValue(userDetailsHashMap);
