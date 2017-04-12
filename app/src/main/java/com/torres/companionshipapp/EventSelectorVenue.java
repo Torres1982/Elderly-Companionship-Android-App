@@ -217,11 +217,9 @@ public class EventSelectorVenue extends AppCompatActivity {
         String key2 = "time";
         String key3 = "city";
         String key4 = "street";
-        String key5 = "partaker";
-        String key6 = "creator";
-        String key7 = "name";
-        String key8 = "email";
-        String defaultPartaker = "Partaker";
+        String key5 = "creator";
+        String key6 = "name";
+        String key7 = "email";
 
         // Get the Database reference
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/");
@@ -234,10 +232,9 @@ public class EventSelectorVenue extends AppCompatActivity {
         userDetailsHashMap.put(key2, eventTime);
         userDetailsHashMap.put(key3, citySpinnerValue);
         userDetailsHashMap.put(key4, eventStreet);
-        userDetailsHashMap.put(key5, defaultPartaker);
-        userDetailsHashMap.put(key6, databaseUser);
-        userDetailsHashMap.put(key7, eventName);
-        userDetailsHashMap.put(key8, databaseEmail);
+        userDetailsHashMap.put(key5, databaseUser);
+        userDetailsHashMap.put(key6, eventName);
+        userDetailsHashMap.put(key7, databaseEmail);
 
         // Save Event details in the Firebase database (at root "events")
         databaseReference.child("events").child(eventName).push().setValue(userDetailsHashMap);
