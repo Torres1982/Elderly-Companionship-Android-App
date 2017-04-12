@@ -86,10 +86,10 @@
     <!-- *************************************************************************************** -->
     <string-array name = "event_array">
         <item> Bingo </item>
-        <item> Coffee Shop </item>
-        <item> Dogs Racing </item>
+        <item> Dogs-Racing </item>
         <item> Golf </item>
-        <item> Horse Racing </item>
+        <item> Horse-Racing </item>
+        <item> Restaurant </item>
         <item> Theatre </item>
     </string-array>
 
@@ -98,8 +98,8 @@
     <!-- *************************************************************************************** -->
     <string-array name = "map_array">
         <item> Cinema </item>
-        <item> Coffee Shop </item>
         <item> Museum </item>
+        <item> Restaurant </item>
         <item> Theatre </item>
     </string-array>
 
