@@ -108,8 +108,7 @@ public class EventSelectorVenue extends AppCompatActivity {
                         eventAddress = eventStreet + ", " + citySpinnerValue;
                     }
                 }
-
-                Toast.makeText(getApplicationContext(), eventAddress, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), eventAddress, Toast.LENGTH_LONG).show();
 
                 addEventToFirebaseDatabase();
                 redirectToEventsHolderActivity();
