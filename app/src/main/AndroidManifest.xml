@@ -37,6 +37,7 @@
         <activity android:name=".EventSelectorDate"> </activity>
         <activity android:name=".EventSelectorTime"> </activity>
         <activity android:name=".EventSelectorVenue"> </activity>
+        <activity android:name=".EventsList"> </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
