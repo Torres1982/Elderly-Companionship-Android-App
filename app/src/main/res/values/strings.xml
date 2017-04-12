@@ -43,7 +43,7 @@
     <string name="go_to_add_event_date"> Go To Add Event Date </string>
     <string name="go_to_add_event_time"> Go To Add Event Time </string>
     <string name="go_to_add_event_venue"> Go To Add Event Venue </string>
-    <string name="event_street_hint"> Enter Street Name </string>
+    <string name="event_street_hint"> Enter Street Name  </string>
 
     <!-- KEYBOARD STRINGS -->
     <string name="keyboard_go"> Go </string>
