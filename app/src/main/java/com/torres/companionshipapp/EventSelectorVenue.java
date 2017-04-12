@@ -38,6 +38,7 @@ public class EventSelectorVenue extends AppCompatActivity {
     String eventAddress;
     String userId;
     String databaseUser;
+    String databaseEmail;
     final String EVENT_NAME_KEY = "eventName";
     final String EVENT_DATE_KEY = "eventDate";
     final String EVENT_TIME_KEY = "eventTime";
@@ -220,6 +221,7 @@ public class EventSelectorVenue extends AppCompatActivity {
         String key5 = "partaker";
         String key6 = "creator";
         String key7 = "name";
+        String key8 = "email";
         String defaultPartaker = "Partaker";
 
         // Get the Database reference
@@ -236,6 +238,7 @@ public class EventSelectorVenue extends AppCompatActivity {
         userDetailsHashMap.put(key5, defaultPartaker);
         userDetailsHashMap.put(key6, databaseUser);
         userDetailsHashMap.put(key7, eventName);
+        userDetailsHashMap.put(key8, databaseEmail);
 
         // Save Event details in the Firebase database (at root "events")
         databaseReference.child("events").child(eventName).push().setValue(userDetailsHashMap);
@@ -268,6 +271,8 @@ public class EventSelectorVenue extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     // Get User name from Firebase database
                     databaseUser = dataSnapshot.child("username").getValue(String.class);
+                    // Get User email from Firebase database
+                    databaseEmail = dataSnapshot.child("email").getValue(String.class);
                     //Toast.makeText(EventSelectorVenue.this, databaseUser, Toast.LENGTH_LONG).show();
                 }
             }
