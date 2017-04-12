@@ -138,4 +138,46 @@
         <item> 90 </item>
     </string-array>
 
+    <!-- *************************************************************************************** -->
+    <!-- ******************** Array of Irish cities ******************************************** -->
+    <!-- *************************************************************************************** -->
+    <string-array name = "city_array">
+        <item> Arklow </item>
+        <item> Athlone </item>
+        <item> Balbriggan </item>
+        <item> Bray </item>
+        <item> Carlow </item>
+        <item> Cavan </item>
+        <item> Celbrige </item>
+        <item> Clonmel </item>
+        <item> Cork </item>
+        <item> Drogheda </item>
+        <item> Dublin </item>
+        <item> Dundalk </item>
+        <item> Ennis </item>
+        <item> Galway </item>
+        <item> Greystones </item>
+        <item> Kildare </item>
+        <item> Kilkenny </item>
+        <item> Killarney </item>
+        <item> Leixlip </item>
+        <item> Letterkenny </item>
+        <item> Limerick </item>
+        <item> Malahide </item>
+        <item> Maynooth </item>
+        <item> Mullingar </item>
+        <item> Naas </item>
+        <item> Navan </item>
+        <item> Newbridge </item>
+        <item> Portlaoise </item>
+        <item> Portmarnock </item>
+        <item> Sligo </item>
+        <item> Swords </item>
+        <item> Tipperary </item>
+        <item> Tralee </item>
+        <item> Waterford </item>
+        <item> Wexford </item>
+        <item> Wicklow </item>
+    </string-array>
+
 </resources>
