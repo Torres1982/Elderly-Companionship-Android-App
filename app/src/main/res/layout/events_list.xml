@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.torres.companionshipapp.EventsList">
+
+    <TextView
+        android:id="@+id/events_list_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_of_friends"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/sixteen_dp" />
+
+    <ListView
+        style="@style/ListViewStyle.Light"
+        android:id="@+id/events_list_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:choiceMode="singleChoice"
+        android:background="@drawable/list_view_selector"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/events_list_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </ListView>
+
+</RelativeLayout>
