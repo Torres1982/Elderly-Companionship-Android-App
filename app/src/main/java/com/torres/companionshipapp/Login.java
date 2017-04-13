@@ -241,14 +241,14 @@ public class Login extends AppCompatActivity {
     // *********************************************************************************************
     public void constructSharedPreferencesEmail() {
 
-        String key = "email";
+        String key2 = "email";
 
         // Create object of Shared Preferences
         SharedPreferences sharedPreferencesEmail = PreferenceManager.getDefaultSharedPreferences(this);
         // Get Editor
         SharedPreferences.Editor emailEditor = sharedPreferencesEmail.edit();
         // Assign the string value to the email
-        emailEditor.putString(key, email);
+        emailEditor.putString(key2, email);
         // Commit the Edit
         emailEditor.apply();
     }
