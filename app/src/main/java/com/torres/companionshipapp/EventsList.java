@@ -33,7 +33,7 @@ public class EventsList extends AppCompatActivity {
     String selectedValue;
     String message;
     String userId;
-    String userEmail;
+    String loginEmail;
     String eventCity;
     String eventCreator;
     String eventDate;
@@ -65,6 +65,7 @@ public class EventsList extends AppCompatActivity {
 
         // Call the supportive methods
         setUpActionBar();
+        receiveEmailFromSharedPreferences();
 
         // Call the methods with associated Listeners
         getEventsDetailsFromFirebaseDatabase();
@@ -111,7 +112,7 @@ public class EventsList extends AppCompatActivity {
             // Assign Firebase User Id for the user
             userId = firebaseUser.getUid();
             // Get Firebase User email
-            userEmail = firebaseUser.getEmail();
+            //userEmail = firebaseUser.getEmail();
         }
 
         // Get only queries that relate to currently logged in user
@@ -142,7 +143,12 @@ public class EventsList extends AppCompatActivity {
                                 eventCity + " \n" +
                                 eventStreet);
 
-                        //Toast.makeText(FriendsList.this, databaseUser + "\n" + databaseEmail + "\n" + age + "\n" + hobby, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(FriendsList.this, eventName + "\n" + eventEmail, Toast.LENGTH_LONG).show();
+                        /*
+                        if (loginEmail.equals(eventEmail)) {
+                            eventsListView.setClickable(false);
+                        }
+                        */
                     }
                 }
                 createListView();
@@ -180,7 +186,7 @@ public class EventsList extends AppCompatActivity {
     public void constructSharedPreferences() {
 
         String key = "message";
-        message = "You do not have any friends added yet";
+        message = "You do not have any events added yet";
 
         // Create object of Shared Preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -208,20 +214,18 @@ public class EventsList extends AppCompatActivity {
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedValue = (String) parent.getItemAtPosition(position);
-                //Toast.makeText(FriendsList.this, selectedValue, Toast.LENGTH_LONG).show();
+                //Toast.makeText(EventsList.this, selectedValue, Toast.LENGTH_LONG).show();
 
                 tokenizeSelectedValueFromListView(selectedValue);
 
                 String [] addresses = {eventEmail};
                 String subject = "Hello from Companionship App User";
 
-                // Below email address used for testing only to check for incoming emails
+                // Below email address used for testing only to check for incoming emails on my email box
                 //String [] addresses = {"artur.sukiennik82@gmail.com"};
 
-                if (!userEmail.equals(eventEmail)) {
-                    // Call the email intent
-                    createGMail(addresses, subject);
-                }
+                // Call the email intent
+                createGMail(addresses, subject);
             }
         });
     }
@@ -237,7 +241,7 @@ public class EventsList extends AppCompatActivity {
             //Toast.makeText(EventsList.this, i + " " + tokenStrings[i], Toast.LENGTH_LONG).show();
 
             // Assign the values from the array to user detail fields
-            tokenEmail = tokenStrings[8];
+            tokenEmail = tokenStrings[9];
 
             removeSpacesFromTokenizedStrings();
 
@@ -266,5 +270,20 @@ public class EventsList extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    // *********************************************************************************************
+    // ******************** Get email from login page **********************************************
+    // *********************************************************************************************
+    public void receiveEmailFromSharedPreferences() {
+
+        String keyEmail = "email";
+        String value = "";
+
+        // Retrieve the String message using Shared Preferences (Custom Dialog Box message)
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        loginEmail = sharedPreferences.getString(keyEmail, value);
+
+        //Toast.makeText(EventsList.this, loginEmail, Toast.LENGTH_LONG).show();
     }
 }
