@@ -67,7 +67,6 @@ public class FriendsList extends AppCompatActivity {
         // Call the methods with associated Listeners
         getFriendsDetailsFromFirebaseDatabase();
         getClickedValueFromListView();
-        //tokenizeSelectedValueFromListView(selectedValue);
     }
 
     // *********************************************************************************************
