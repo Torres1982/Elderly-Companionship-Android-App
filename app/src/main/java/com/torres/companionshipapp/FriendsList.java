@@ -344,8 +344,9 @@ public class FriendsList extends AppCompatActivity {
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
+        
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
     }
 }
