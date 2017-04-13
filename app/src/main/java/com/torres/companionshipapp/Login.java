@@ -34,14 +34,9 @@ public class Login extends AppCompatActivity {
     String email;
     String password;
     String message;
-    //String userId;
-    //String loggedUser;
     EditText loginEmail;
     EditText loginPassword;
     ProgressBar loginProgressBar;
-    //FirebaseAuth authenticationLogin;
-    //FirebaseUser firebaseUser;
-    //DatabaseReference databaseReference;
     private boolean isValidatedEmail;
 
     @Override
@@ -146,7 +141,8 @@ public class Login extends AppCompatActivity {
                                 showDialog();
                             }
                             else {
-                                //Toast.makeText(Login.this, userCreated, Toast.LENGTH_LONG).show();
+                                // Send User email to Event List activity
+                                constructSharedPreferencesEmail();
 
                                 // Prepare the intent and send the username to Profile Page activity
                                 Intent loginIntent = new Intent (getApplicationContext(), ProfilePage.class);
@@ -222,7 +218,7 @@ public class Login extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    // ******************** Create Shared Preferences *************************************************
+    // ******************** Create Shared Preferences **********************************************
     // ******************** Send the title for the Custom Dialog ***********************************
     // *********************************************************************************************
     public void constructSharedPreferences() {
@@ -237,6 +233,24 @@ public class Login extends AppCompatActivity {
         editor.putString(key, message);
         // Commit the Edit
         editor.apply();
+    }
+
+    // *********************************************************************************************
+    // ******************** Create Shared Preferences **********************************************
+    // ******************** Send the email to Event List activity **********************************
+    // *********************************************************************************************
+    public void constructSharedPreferencesEmail() {
+
+        String key = "email";
+
+        // Create object of Shared Preferences
+        SharedPreferences sharedPreferencesEmail = PreferenceManager.getDefaultSharedPreferences(this);
+        // Get Editor
+        SharedPreferences.Editor emailEditor = sharedPreferencesEmail.edit();
+        // Assign the string value to the email
+        emailEditor.putString(key, email);
+        // Commit the Edit
+        emailEditor.apply();
     }
 
     // *********************************************************************************************
