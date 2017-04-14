@@ -25,6 +25,7 @@
         <activity android:name=".FriendsFinder"> </activity>
         <activity android:name=".EventsFinderName"> </activity>
         <activity android:name=".EventsFinderDateHolder"> </activity>
+        <activity android:name=".EventsFinderDateListView"> </activity>
         <activity android:name=".HobbyAdd"> </activity>
         <activity android:name=".Map"> </activity>
         <activity android:name=".CustomActionBar"> </activity>
