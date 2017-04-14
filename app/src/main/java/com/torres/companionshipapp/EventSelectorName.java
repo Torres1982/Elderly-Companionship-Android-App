@@ -43,10 +43,10 @@ public class EventSelectorName extends AppCompatActivity {
         addEventNameButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View view) {
 
-                // Get the value from the selected dropdown list
-                spinnerValue = String.valueOf(spinner.getSelectedItem());
+            // Get the value from the selected dropdown list
+            spinnerValue = String.valueOf(spinner.getSelectedItem());
 
-                prepareIntent();
+            prepareIntent();
             }
         });
     }
