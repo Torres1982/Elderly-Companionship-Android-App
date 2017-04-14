@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Map extends AppCompatActivity {
 
@@ -47,9 +46,6 @@ public class Map extends AppCompatActivity {
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
 
-                String chosenValue = "Value chosen: ";
-                Toast.makeText(Map.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
-                
                 prepareIntent();
             }
         });
