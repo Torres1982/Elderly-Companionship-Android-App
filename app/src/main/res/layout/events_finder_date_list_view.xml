@@ -7,4 +7,27 @@
     android:background="@color/grey"
     tools:context="com.torres.companionshipapp.EventsFinderDateListView">
 
+    <TextView
+        android:id="@+id/text_view_date_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/find_event"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        style="@style/ListViewStyle.Light"
+        android:id="@+id/events_date_list_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:choiceMode="singleChoice"
+        android:background="@drawable/list_view_selector"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </ListView>
+
 </RelativeLayout>
