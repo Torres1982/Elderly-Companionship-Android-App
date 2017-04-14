@@ -1,5 +1,6 @@
 package com.torres.companionshipapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,8 +49,24 @@ public class Map extends AppCompatActivity {
 
                 String chosenValue = "Value chosen: ";
                 Toast.makeText(Map.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
+                
+                prepareIntent();
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Send intent with the Date Strings to next activity *********************
+    // *********************************************************************************************
+    public void prepareIntent() {
+
+        String keyEventOnMap = "eventOnMap";
+
+        // Prepare the intent and send the event name to next activity
+        Intent eventIntent = new Intent (getApplicationContext(), MapPlaces.class);
+        eventIntent.putExtra(keyEventOnMap, spinnerValue);
+        startActivity(eventIntent);
+        finish();
     }
 
     // *********************************************************************************************
