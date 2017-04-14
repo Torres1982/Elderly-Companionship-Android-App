@@ -57,7 +57,7 @@ public class EventsList extends AppCompatActivity {
         // Get the Firebase authentication instance
         firebaseAuthentication = FirebaseAuth.getInstance();
 
-        // Get reference of the objects from the friends_list.xml file
+        // Get reference of the objects
         eventsListView = (ListView) findViewById(R.id.events_list_view);
 
         // Create an Array List of Friends details
