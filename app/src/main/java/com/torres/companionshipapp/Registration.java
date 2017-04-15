@@ -1,14 +1,18 @@
 package com.torres.companionshipapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -310,10 +314,50 @@ public class Registration extends AppCompatActivity {
         // No network accessible
         else {
             Log.i(MY_TAG, noNetworkConnection);
-            message = noNetworkConnection;
-            showDialog();
+            switchWiFiOn();
             //Toast.makeText(Registration.this, noNetworkConnection, Toast.LENGTH_LONG).show();
         }
+    }
+
+    // *********************************************************************************************
+    // ******************** Display Network connection custom Dialog *******************************
+    // *********************************************************************************************
+    public void switchWiFiOn() {
+
+        // Create a new instance of Dialog builder
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Registration.this, R.style.CustomDialog);
+
+        // Get the Layout Inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        // Build the Dialog Box using a builder
+        dialogBuilder.setCancelable(false)
+                //.setMessage(alertMessage)
+                .setView(inflater.inflate(R.layout.custom_dialog_wifi_connection, null))
+                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finishAffinity();
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        // Get the reference to positive and negative buttons
+        Button positiveButton =  alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+
+        // Set colour of Dialog Buttons
+        positiveButton.setTextColor(Color.YELLOW);
+        negativeButton.setTextColor(Color.YELLOW);
     }
 
     // *********************************************************************************************
