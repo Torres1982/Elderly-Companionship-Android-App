@@ -21,6 +21,7 @@
         android:layout_height="@dimen/forty_dp"
         android:layout_marginStart="@dimen/twenty_four_dp"
         android:layout_marginLeft="@dimen/twenty_four_dp"
-        android:src="@drawable/logo1"
+        android:src="@drawable/logo"
          />
+    
 </LinearLayout>
