@@ -29,7 +29,7 @@
     <string name="find_friend_by_age"> Find Friends by Age </string>
     <string name="find_event"> Find Events to Attend </string>
     <string name="dialog_log_out_message"> Do you want to exit ? </string>
-    <string name="dialog_wifi_message"> You need to connect to the Internet </string>
+    <string name="dialog_wifi_message"> You need to connect to the Internet, otherwise exit the application </string>
     <string name="dialog_hobby_message"> Enter your hobby </string>
     <string name="dialog_button_yes"> Yes </string>
     <string name="dialog_button_no"> No </string>
