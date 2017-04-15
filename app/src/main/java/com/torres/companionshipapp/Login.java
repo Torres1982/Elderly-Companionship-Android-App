@@ -289,8 +289,8 @@ public class Login extends AppCompatActivity {
         }
         else {
             Log.i(MY_TAG, noNetworkConnection);
-            message = noNetworkConnection;
             switchWiFiOn();
+            //Toast.makeText(Login.this, noNetworkConnection, Toast.LENGTH_LONG).show();
         }
     }
 
