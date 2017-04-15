@@ -1,14 +1,18 @@
 package com.torres.companionshipapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -286,58 +290,48 @@ public class Login extends AppCompatActivity {
         else {
             Log.i(MY_TAG, noNetworkConnection);
             message = noNetworkConnection;
-            showDialog();
-            //Toast.makeText(Login.this, noNetworkConnection, Toast.LENGTH_LONG).show();
+            switchWiFiOn();
         }
     }
 
     // *********************************************************************************************
-    // ******************** Get the User Name from Database ****************************************
+    // ******************** Display Network connection custom Dialog *******************************
     // *********************************************************************************************
-    /*public void getUserNameFromFirebaseDatabase() {
+    public void switchWiFiOn() {
 
-        // Get the Database reference
-        //databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/users");
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        // Create a new instance of Dialog builder
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Login.this, R.style.CustomDialog);
 
-        // Get the Firebase User instance
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        // Get the Layout Inflater
+        LayoutInflater inflater = this.getLayoutInflater();
 
-        // Assign Firebase User Id for the user
-        if (firebaseUser != null) {
-            userId = firebaseUser.getUid();
-        }
+        // Build the Dialog Box using a builder
+        dialogBuilder.setCancelable(false)
+                //.setMessage(alertMessage)
+                .setView(inflater.inflate(R.layout.custom_dialog_wifi_connection, null))
+                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finishAffinity();
+                        dialog.cancel();
+                    }
+                });
 
-        Query userDetails = databaseReference.child("users").child(userId);
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
 
-        userDetails.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        // Get the reference to positive and negative buttons
+        Button positiveButton =  alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
 
-                // Iterate through the database
-                for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
-                    // Get the User Firebase email
-                    //String firebaseUserEmail = firebaseUser.getEmail();
-                    //String loggedUser = myDatabase.child(userId).child("username").getValue(String.class);
-                    //Toast.makeText(Login.this, loggedUser, Toast.LENGTH_LONG).show();
-
-                    String loggedUser = myDatabase.child("username").getValue(String.class);
-                    Toast.makeText(Login.this, loggedUser, Toast.LENGTH_LONG).show();
-
-                    // THIS WORKS !!!
-                    //Toast.makeText(Login.this, userId, Toast.LENGTH_LONG).show();
-                    // THIS WORKS !!!
-                    //Toast.makeText(Login.this, firebaseUserEmail, Toast.LENGTH_LONG).show();
-
-                    //String a = myDatabase.child("username").getValue(String.class);
-                    //Toast.makeText(Login.this, "Username: " + a, Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Nothing to do here
-            }
-        });
-    }*/
+        // Set colour of Dialog Buttons
+        positiveButton.setTextColor(Color.YELLOW);
+        negativeButton.setTextColor(Color.YELLOW);
+    }
 }
