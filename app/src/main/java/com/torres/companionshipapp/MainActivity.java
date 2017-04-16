@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: MainActivity <br>
+ * This class is a starting point for any user.
+ * Users can go to Log In or Register activities from this activity.
+ * @author B00073668 Artur Sukiennik
+ * @version 2, date: 5.01.2017
+ */
 public class MainActivity extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -33,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    //                      Register Listener for the Login Button
-    //                      Redirect to the Login Page
+    // ******************** Register Listener for the Login Button *********************************
+    // ******************** Redirect to the Login Page *********************************************
     // *********************************************************************************************
     public void addListenerToLoginButton () {
         goToLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    //                      Register Listener for the Registration Button
-    //                      Redirect to the Registration Page
+    // ******************** Register Listener for the Registration Button **************************
+    // ******************** Redirect to the Registration Page **************************************
     // *********************************************************************************************
     public void addListenerToRegistrationButton () {
         goToRegistrationButton.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // *********************************************************************************************
-    //                      Set up custom Action Bar title
-    //                      Add a logo to the Action Bar
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
     // *********************************************************************************************
     public void setUpActionBar() {
 
