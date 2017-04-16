@@ -19,7 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Name: AgeAdd <br>
- * This class adds current user's age to the Firebase DB
+ * This class adds current user's age to the Firebase DB.
+ * Customized Spinner is used to select the age.
  * @author B00073668 Artur Sukiennik
  * @version 3, date: 11.04.2017
  */
