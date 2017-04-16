@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.List;
 
 /**
- * Name: EventsFinderDateHolder <br>
+ * Name: EventsFinderDateListView <br>
  * This class displays the list view of events retrieved from Firebase DB.
  * It retrieves start and end dates of event from previous activity through intents.
  * Selected events are added to Firebase DB (at root: event partakers).
