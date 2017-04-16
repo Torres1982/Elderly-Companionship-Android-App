@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Name: AgeAdd <br>
  * This class adds current user's age to the Firebase DB
  * @author B00073668 Artur Sukiennik
- * @version 19, date: 16.04.2017
+ * @version 3, date: 11.04.2017
  */
 public class AgeAdd extends AppCompatActivity {
 
