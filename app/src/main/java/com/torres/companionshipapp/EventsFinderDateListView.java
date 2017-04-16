@@ -152,29 +152,28 @@ public class EventsFinderDateListView extends AppCompatActivity {
                         editEventDate();
                         formatDates();
 
-                            // Display only events with matching event date range
-                            if (dateEventFixed.after(dateToStart) && dateEventFixed.before(dateToFinish)) {
-                                String event = "Click to Attend Event:";
-                                eventsArrayList.add(event + " \n" +
-                                        eventName + " \n" +
-                                        eventCreator + " \n" +
-                                        creatorEmail + " \n" +
-                                        eventDate + " \n" +
-                                        eventTime + " \n" +
-                                        eventCity + " \n" +
-                                        eventStreet);
+                        // Display only events with matching event date range
+                        if (dateEventFixed.after(dateToStart) && dateEventFixed.before(dateToFinish)) {
+                            String event = "Click to Attend Event:";
+                            eventsArrayList.add(event + " \n" +
+                                    eventName + " \n" +
+                                    eventCreator + " \n" +
+                                    creatorEmail + " \n" +
+                                    eventDate + " \n" +
+                                    eventTime + " \n" +
+                                    eventCity + " \n" +
+                                    eventStreet);
 
-                                // At least one event has been found in the database
-                                isEventFound = true;
-                            }
+                            // At least one event has been found in the database
+                            isEventFound = true;
+                        }
                     }
                 }
                 createListView();
 
-                if(isEventFound) {
+                if (isEventFound) {
                     isEventFound = false;
-                }
-                else {
+                } else {
                     showDialog();
                 }
             }
