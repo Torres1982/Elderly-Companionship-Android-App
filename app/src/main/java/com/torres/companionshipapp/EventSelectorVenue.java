@@ -25,6 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.*;
 import java.util.Map;
 
+/**
+ * Name: EventSelectorVenue <br>
+ * This class allows to choose the address of event of interest.
+ * Customized Spinners are used to choose the city, (in case of Dublin also Dublin area).
+ * @author B00073668 Artur Sukiennik
+ * @version 7, date: 13.04.2017
+ */
 public class EventSelectorVenue extends AppCompatActivity {
 
     // Declare global variables and objects
