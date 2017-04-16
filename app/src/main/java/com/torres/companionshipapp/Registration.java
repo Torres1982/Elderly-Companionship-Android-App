@@ -37,6 +37,19 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Name: Registration <br>
+ * This class allows a user to register in the application.
+ * Firebase authentication is used.
+ * User email and password are used as credentials.
+ * Custom validation is implemented.
+ * Network connectivity is checked upon the login (if there is no network connection -
+ * user is shown a custom dialog box to choose whether to exit the application or to be redirected
+ * to Wi-Fi settings to switch it on).
+ * When registration is successful, the user is added to Firebase DB (at root: users).
+ * @author B00073668 Artur Sukiennik
+ * @version 8, date: 15.01.2017
+ */
 public class Registration extends AppCompatActivity {
 
     // Declare global variables and objects
