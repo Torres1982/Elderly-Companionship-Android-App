@@ -17,6 +17,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Name: AgeAdd <br>
+ * This class adds current user's age to the Firebase DB
+ * @author B00073668 Artur Sukiennik
+ * @version 19, date: 16.04.2017
+ */
 public class AgeAdd extends AppCompatActivity {
 
     // Declare global variables and objects
