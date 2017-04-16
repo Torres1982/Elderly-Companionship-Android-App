@@ -31,6 +31,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Name: Login <br>
+ * This class allows a user to log in to the application.
+ * Firebase authentication is used.
+ * Each user's login is stored in Firebase database (under root: users).
+ * User email and password are used as credentials.
+ * Custom validation is implemented.
+ * Network connectivity is checked upon the login (if there is no network connection -
+ * user is shown a custom dialog box to choose whether to exit the application or to be redirected
+ * to Wi-Fi settings to switch it on).
+ * @author B00073668 Artur Sukiennik
+ * @version 8, date: 15.01.2017
+ */
 public class Login extends AppCompatActivity {
 
     // Declare global variables and objects
