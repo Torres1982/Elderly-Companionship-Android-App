@@ -22,6 +22,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Name: ProfilePage <br>
+ * This class is a holder to redirect user to other activities:
+ * (user can choose to find friends, events, add own details or show details, and log out).
+ * Logged in user name is retrieved from Firebase DB (users tree) and displayed as a welcome message.
+ * Log Out authentication is performed to kill the session.
+ * @author B00073668 Artur Sukiennik
+ * @version 1, date: 17.01.2017
+ */
 public class ProfilePage extends AppCompatActivity {
 
     // Declare global variables and objects
