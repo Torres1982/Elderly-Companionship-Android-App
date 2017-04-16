@@ -11,6 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+/**
+ * Name: EventSelectorTime <br>
+ * This class allows to choose the time of event of interest.
+ * Customized Time Picker is used to choose the hour and minutes of event.
+ * @author B00073668 Artur Sukiennik
+ * @version 4, date: 15.04.2017
+ */
 public class EventSelectorTime extends AppCompatActivity {
 
     // Declare global variables and objects
