@@ -136,6 +136,7 @@ public class EventsList extends AppCompatActivity {
 
                 if (eventsArrayList.isEmpty()) {
                     showDialog();
+                    prepareIntent();
                 }
             }
 
@@ -144,6 +145,17 @@ public class EventsList extends AppCompatActivity {
                 // Nothing to do here
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Redirect to EventsFinderDateHolder activity if list is empty ***********
+    // *********************************************************************************************
+    public void prepareIntent() {
+
+        // Redirect to Event
+        Intent eventIntent = new Intent(getApplicationContext(), EventsFinderDateHolder.class);
+        startActivity(eventIntent);
+        finish();
     }
 
     // *********************************************************************************************
