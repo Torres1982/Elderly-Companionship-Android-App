@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: EventsHolder <br>
+ * This class is a holder to redirect user to other activities:
+ * (user can choose event by the name or date).
+ * @author B00073668 Artur Sukiennik
+ * @version 1, date: 27.03.2017
+ */
 public class EventsHolder extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -21,7 +28,7 @@ public class EventsHolder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_holder);
 
-        // Retrieve the reference of the objects from the profile_page.xml file
+        // Retrieve the reference of the objects from the events_holder.xml file
         createEventsButton = (Button)findViewById(R.id.create_event);
         showEventsByNameButton = (Button)findViewById(R.id.find_event_by_name);
         showEventsByDateButton = (Button)findViewById(R.id.find_event_by_date);
