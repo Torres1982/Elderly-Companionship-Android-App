@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: DetailUpdater <br>
+ * This class is a holder to redirect user to other activities:
+ * (user can add or update own hobby and/or age).
+ * @author B00073668 Artur Sukiennik
+ * @version 5, date: 7.04.2017
+ */
 public class DetailUpdater extends AppCompatActivity {
 
     // Declare global variables and objects
