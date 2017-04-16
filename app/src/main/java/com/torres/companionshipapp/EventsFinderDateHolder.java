@@ -1,8 +1,6 @@
 package com.torres.companionshipapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.os.Bundle;
@@ -13,12 +11,20 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Name: EventsFinderDateHolder <br>
+ * This class allows to choose the range of days within which the user want to find the event.
+ * Customized Spinner is used to choose the number of days within which the event is to be found.
+ * Customized Date Picker is used to select the date of the event.
+ * Operations on dates are performed (adding number of days to the chosen day and formatting dates).
+ * @author B00073668 Artur Sukiennik
+ * @version 8, date: 9.04.2017
+ */
 public class EventsFinderDateHolder extends AppCompatActivity {
 
     // Declare global variables and objects
