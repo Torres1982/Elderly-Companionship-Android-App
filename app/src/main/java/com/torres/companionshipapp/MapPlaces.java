@@ -2,16 +2,18 @@ package com.torres.companionshipapp;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,8 +28,18 @@ import java.io.IOException;
 
 import static android.location.LocationManager.NETWORK_PROVIDER;
 
+/**
+ * Name: MapPlaces <br>
+ * THIS CLASS IS ADDED TO THE FUTURE WORK part.
+ * This class displays the Google Map (user current location).
+ * Geocoder is applied to find the correct address by give current position coordinates.
+ * When clicking on the custom Marker icon, user is shown the address of current location.
+ * @author B00073668 Artur Sukiennik
+ * @version 15, date: 15.04.2017
+ */
 public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
+    // Declare global variables and objects
     GoogleMap googleMap;
     LatLng positionCoordinates;
     LocationManager locationManager;
@@ -39,11 +51,15 @@ public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, G
     String message;
     double latitude;
     double longitude;
+    AppCompatActivity appCompatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_google_map);
+
+        // Initialize imported App Compat Activity (cannot be extended)
+        appCompatActivity = new AppCompatActivity();
 
         // Initialize Location Manager
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -134,5 +150,30 @@ public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, G
         catch (IOException exception) {}
 
         return address;
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = appCompatActivity.getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get the reference from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
