@@ -28,6 +28,14 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Name: FriendsFinderHobby <br>
+ * This class allows a user to select the specific hobby to find friends.
+ * Customized Spinner is used to look for friends.
+ * Selected Friend from the list view is added to Firebase DB (at root: friends).
+ * @author B00073668 Artur Sukiennik
+ * @version 4, date: 10.03.2017
+ */
 public class FriendsFinderHobby extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -64,7 +72,7 @@ public class FriendsFinderHobby extends AppCompatActivity {
         // Get the Firebase authentication instance
         firebaseAuthentication = FirebaseAuth.getInstance();
 
-        // Get reference of the objects from the friends_finder_hobby_hobby.xml file
+        // Get reference of the objects from the friends_finder_hobby.xml file
         findFriendsButton = (Button)findViewById(R.id.button_find_friends);
         spinner = (Spinner) findViewById(R.id.hobby_spinner);
         friendsListView = (ListView) findViewById(R.id.list_view);
@@ -95,31 +103,6 @@ public class FriendsFinderHobby extends AppCompatActivity {
             getUserDetailsFromFirebaseDatabase();
             }
         });
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get reference of the object from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 
     // *********************************************************************************************
@@ -348,5 +331,30 @@ public class FriendsFinderHobby extends AppCompatActivity {
 
         // Save User's details in the Firebase database (at root "friends")
         databaseReference.child("friends").child(userId).push().setValue(friendsDetailsHashMap);
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get reference of the object from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
