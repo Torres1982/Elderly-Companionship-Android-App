@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: DetailsHolder <br>
+ * This class is a holder to redirect user to other activities:
+ * (show friends list, show events list, and show the Google map).
+ * @author B00073668 Artur Sukiennik
+ * @version 5, date: 5.04.2017
+ */
 public class DetailsHolder extends AppCompatActivity {
 
     // Declare global variables and objects
