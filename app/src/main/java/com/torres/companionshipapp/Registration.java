@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
  * to Wi-Fi settings to switch it on).
  * When registration is successful, the user is added to Firebase DB (at root: users).
  * @author B00073668 Artur Sukiennik
- * @version 8, date: 15.01.2017
+ * @version 8, date: 11.01.2017
  */
 public class Registration extends AppCompatActivity {
 
