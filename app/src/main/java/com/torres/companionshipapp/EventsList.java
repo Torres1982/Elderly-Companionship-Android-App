@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Name: EventsList <br>
+ * This class retrieves the list of events from Firebase DB.
+ * User can click on the list view item to send email to the event creator.
+ * @author B00073668 Artur Sukiennik
+ * @version 1, date: 27.03.2017
+ */
 public class EventsList extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -70,31 +76,6 @@ public class EventsList extends AppCompatActivity {
         // Call the methods with associated Listeners
         getEventsDetailsFromFirebaseDatabase();
         getClickedValueFromListView();
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get reference of the object from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 
     // *********************************************************************************************
@@ -285,5 +266,30 @@ public class EventsList extends AppCompatActivity {
         loginEmail = sharedPreferences.getString(keyEmail, value);
 
         //Toast.makeText(EventsList.this, loginEmail, Toast.LENGTH_LONG).show();
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get reference of the object from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
