@@ -27,6 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.*;
 import java.util.Map;
 
+/**
+ * Name: EventsFinderName <br>
+ * This class displays the list view of events retrieved from Firebase DB.
+ * Customized Spinner is used to find events by the name.
+ * Selected events are added to Firebase DB (at root: event partakers).
+ * @author B00073668 Artur Sukiennik
+ * @version 2, date: 26.03.2017
+ */
 public class EventsFinderName extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -97,37 +105,9 @@ public class EventsFinderName extends AppCompatActivity {
                 // Get the value from the selected dropdown list
                 spinnerValue = String.valueOf(spinner.getSelectedItem());
 
-                //String chosenValue = "Value chosen: ";
-                //Toast.makeText(EventsFinderName.this, chosenValue + spinnerValue, Toast.LENGTH_LONG).show();
-
                 getEventDetailsFromFirebaseDatabase();
             }
         });
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get the reference from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 
     // *********************************************************************************************
@@ -395,5 +375,30 @@ public class EventsFinderName extends AppCompatActivity {
                 // Nothing to do here
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get the reference from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
