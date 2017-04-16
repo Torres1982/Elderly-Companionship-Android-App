@@ -11,6 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: CustomDialog <br>
+ * This class creates a Custom Dialog to display messages to the user.
+ * It implements Shared Preferences to retrieve message Strings from different activities.
+ * @author B00073668 Artur Sukiennik
+ * @version 1.1, date: 13.02.2017
+ */
 public class CustomDialog extends DialogFragment {
 
     Button buttonOk;
@@ -42,6 +49,9 @@ public class CustomDialog extends DialogFragment {
         return customDialogView;
     }
 
+    // *********************************************************************************************
+    // ******************** Register Listener for OK Button ****************************************
+    // *********************************************************************************************
     public void addListenerToOkButton () {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -49,31 +59,4 @@ public class CustomDialog extends DialogFragment {
             }
         });
     }
-
-     /*   @NonNull
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.CustomDialog);
-        //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        // Get the Layout Inflater
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-
-        builder.setView(inflater.inflate(R.layout.custom_dialog, null))
-                .setCancelable(false)
-                //.setMessage("JUST TESTING DIALOG")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
-               *//* .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
-                    }
-                });*//*
-        // Create the AlertDialog object and return it
-        return builder.create();
-    }*/
 }
