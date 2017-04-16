@@ -27,7 +27,7 @@ public class FriendsFinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends_finder);
 
-        // Retrieve the reference of the objects from the profile_page.xml file
+        // Retrieve the reference of the objects from the friends_finder.xml file
         findFriendsByHobbyButton = (Button)findViewById(R.id.find_friends_hobby_button);
         findFriendsByAgeButton = (Button)findViewById(R.id.find_friends_age_button);
 
