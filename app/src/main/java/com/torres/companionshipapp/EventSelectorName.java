@@ -12,6 +12,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Name: EventSelectorName <br>
+ * This class allows to choose the name of event of interest.
+ * Customized Spinner (drop-down list) is used to choose the name.
+ * @author B00073668 Artur Sukiennik
+ * @version 6, date: 13.04.2017
+ */
 public class EventSelectorName extends AppCompatActivity {
 
     // Declare global variables and objects
