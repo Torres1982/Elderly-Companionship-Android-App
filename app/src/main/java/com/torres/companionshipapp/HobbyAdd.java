@@ -17,6 +17,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Name: HobbyAdd <br>
+ * This class adds current user's hobby to the Firebase DB.
+ * Customized Spinner is used to select the hobby.
+ * @author B00073668 Artur Sukiennik
+ * @version 3, date: 11.04.2017
+ */
 public class HobbyAdd extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -63,31 +70,6 @@ public class HobbyAdd extends AppCompatActivity {
                 addHobbyToFirebaseDatabase();
             }
         });
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get the reference from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 
     // *********************************************************************************************
@@ -149,5 +131,30 @@ public class HobbyAdd extends AppCompatActivity {
 
         // Save User's details in the Firebase database (at root "users")
         databaseReference.child("users").child(userId).child("hobby").setValue(spinnerValue);
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get the reference from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
