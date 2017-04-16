@@ -13,7 +13,7 @@ import android.widget.TextView;
 /**
  * Name: EventSelectorDate <br>
  * This class allows to choose the date of event of interest.
- * Customized Date Picker is used to choose the name.
+ * Customized Date Picker is used to choose the date.
  * @author B00073668 Artur Sukiennik
  * @version 2, date: 13.04.2017
  */
