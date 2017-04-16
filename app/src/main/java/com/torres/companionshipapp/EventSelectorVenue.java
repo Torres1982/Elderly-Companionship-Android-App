@@ -29,6 +29,7 @@ import java.util.Map;
  * Name: EventSelectorVenue <br>
  * This class allows to choose the address of event of interest.
  * Customized Spinners are used to choose the city, (in case of Dublin also Dublin area).
+ * Event date, name and time are retrieved from previous activities through intents.
  * @author B00073668 Artur Sukiennik
  * @version 7, date: 13.04.2017
  */
