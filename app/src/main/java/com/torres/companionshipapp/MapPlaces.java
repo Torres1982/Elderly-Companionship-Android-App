@@ -9,11 +9,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -51,15 +46,11 @@ public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, G
     String message;
     double latitude;
     double longitude;
-    AppCompatActivity appCompatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_google_map);
-
-        // Initialize imported App Compat Activity (cannot be extended)
-        appCompatActivity = new AppCompatActivity();
 
         // Initialize Location Manager
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -146,34 +137,9 @@ public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, G
 
         try {
             address = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1).get(0).getAddressLine(0);
+        } catch (IOException exception) {
         }
-        catch (IOException exception) {}
 
         return address;
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = appCompatActivity.getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get the reference from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
