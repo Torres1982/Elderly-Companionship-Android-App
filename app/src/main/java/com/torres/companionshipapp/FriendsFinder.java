@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Name: FriendsFinder <br>
+ * This class is a holder to redirect user to other activities:
+ * (user can choose friend by the hobby or age).
+ * @author B00073668 Artur Sukiennik
+ * @version 1, date: 7.03.2017
+ */
 public class FriendsFinder extends AppCompatActivity {
 
     // Declare global variables and objects
