@@ -1,25 +1,60 @@
 package com.torres.companionshipapp;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
-public class MapPlaces extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-    final String EVENT_ON_MAP = "";
+import java.io.IOException;
+
+import static android.location.LocationManager.NETWORK_PROVIDER;
+
+public class MapPlaces extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
+    GoogleMap googleMap;
+    LatLng positionCoordinates;
+    LocationManager locationManager;
+    Location myLocation;
+    Marker marker;
+    Geocoder geocoder;
+    final String EVENT_ON_MAP = "eventOnMap";
     String eventOnMapToFind;
+    String message;
+    double latitude;
+    double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_google_map);
 
+        // Initialize Location Manager
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
+        mapFragment.getMapAsync(this);
+
         // Call the supportive methods
-        setUpActionBar();
         retrieveIntent();
+        getCurrentCoordinates();
     }
 
     // *********************************************************************************************
@@ -32,32 +67,72 @@ public class MapPlaces extends AppCompatActivity {
 
         if (extras != null) {
             eventOnMapToFind = extras.getString(EVENT_ON_MAP);
-            //Toast.makeText(getApplicationContext(), startDate + " " + endDate, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), eventOnMapToFind, Toast.LENGTH_LONG).show();
         }
     }
 
     // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
+    // ******************** Get current position coordinates ***************************************
     // *********************************************************************************************
-    public void setUpActionBar() {
+    public void getCurrentCoordinates() {
 
-        ActionBar myCustomActionBar = getSupportActionBar();
+        // Check for Network permissions
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
 
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
+        //myLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
+        myLocation = locationManager.getLastKnownLocation(NETWORK_PROVIDER);
 
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+        // Get the current position coordinates
+        latitude = myLocation.getLatitude();
+        longitude = myLocation.getLongitude();
+    }
 
-        // Get the reference from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+    // *********************************************************************************************
+    // ******************** Add marker and set up camera when the map is ready *********************
+    // *********************************************************************************************
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
 
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
+        // Add a marker to indicated the current location on the map
+        positionCoordinates = new LatLng(latitude, longitude);
+
+        // Create a Marker
+        marker = googleMap.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon))
+                .position(positionCoordinates)
+                .title(getAddressFromCurrentLocation(positionCoordinates))
+                .snippet("You are Here Now"));
+
+        // Set camera to follow the current location
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(positionCoordinates));
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        this.marker = marker;
+        marker.showInfoWindow();
+        return true;
+    }
+
+    // *********************************************************************************************
+    // ******************** Get address of the current location from Geocoder **********************
+    // *********************************************************************************************
+    private String getAddressFromCurrentLocation(LatLng currentLocation) {
+        // New instance of Geocoder
+        geocoder = new Geocoder(MapPlaces.this);
+
+        String address = "Default Address";
+
+        try {
+            address = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1).get(0).getAddressLine(0);
+        }
+        catch (IOException exception) {}
+
+        return address;
     }
 }
