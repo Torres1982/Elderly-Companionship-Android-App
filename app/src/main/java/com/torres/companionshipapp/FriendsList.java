@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Name: FriendsList <br>
+ * This class retrieves the list of user's friends from Firebase DB.
+ * User can click on the list view item to send email to friends.
+ * @author B00073668 Artur Sukiennik
+ * @version 4, date: 14.03.2017
+ */
 public class FriendsList extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -67,31 +73,6 @@ public class FriendsList extends AppCompatActivity {
         // Call the methods with associated Listeners
         getFriendsDetailsFromFirebaseDatabase();
         getClickedValueFromListView();
-    }
-
-    // *********************************************************************************************
-    // ******************** Set up custom Action Bar title *****************************************
-    // ******************** Add a logo to the Action Bar *******************************************
-    // *********************************************************************************************
-    public void setUpActionBar() {
-
-        ActionBar myCustomActionBar = getSupportActionBar();
-
-        // Disable default Action Bar settings
-        myCustomActionBar.setDisplayShowHomeEnabled(false);
-        myCustomActionBar.setDisplayShowTitleEnabled(false);
-
-        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
-        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
-
-        // Get reference of the object from the action_bar_title.xml file
-        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
-
-        // Set up custom Action Bar
-        String actionBarTitle = "Elderly Companionship";
-        myTitleTextView.setText(actionBarTitle);
-        myCustomActionBar.setCustomView(myCustomView);
-        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 
     // *********************************************************************************************
@@ -141,105 +122,7 @@ public class FriendsList extends AppCompatActivity {
             }
         });
     }
-    /*
-    public void getFriendsDetailsFromFirebaseDatabase() {
 
-        // Get the Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        // Get the Firebase User instance
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (firebaseUser != null) {
-            // Assign Firebase User Id for the user
-            userId = firebaseUser.getUid();
-        }
-
-        Query friendsDetails = databaseReference.child("friends").child(userId);
-
-        friendsDetails.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if (dataSnapshot.exists()) {
-                    databaseUser = dataSnapshot.child("username").getValue(String.class);
-                    databaseEmail = dataSnapshot.child("email").getValue(String.class);
-                    age = dataSnapshot.child("age").getValue(String.class);
-                    hobby = dataSnapshot.child("hobby").getValue(String.class);
-
-                    Toast.makeText(FriendsList.this, databaseUser + "\n" + databaseEmail + "\n" + age + "\n" + hobby, Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-    */
-    /*
-    public void getFriendsDetailsFromFirebaseDatabase() {
-
-        boolean isUserId = false;
-
-        // Get the Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://companionship-app.firebaseio.com/friends");
-
-        // Get the Firebase User instance
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (firebaseUser != null) {
-            // Assign Firebase User Id for the user
-            userId = firebaseUser.getUid();
-            // Get the Firebase User email from current session
-            userEmailFromSession = firebaseUser.getEmail();
-        }
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                // Clear the content of the Array List before displaying a new set of rows
-                friendsArrayList.clear();
-
-                // Iterate through the database
-                for (DataSnapshot myDatabase : dataSnapshot.getChildren()) {
-                    for (DataSnapshot subchild : myDatabase.getChildren()) {
-                        // Get User email from Firebase database
-                        databaseEmail = subchild.child("email").getValue(String.class);
-                        // Get User name from Firebase database
-                        databaseUser = subchild.child("username").getValue(String.class);
-                        // Get User hobby from Firebase database
-                        hobby = subchild.child("hobby").getValue(String.class);
-                        // Get User age from Firebase database
-                        age = subchild.child("age").getValue(String.class);
-
-                        //Toast.makeText(FriendsList.this, databaseUser + "\n" + databaseEmail + "\n" + age + "\n" + hobby, Toast.LENGTH_LONG).show();
-
-                        // Avoid adding currently logged in user to list of friends
-                        if (userEmailFromSession.equals(databaseEmail)) {
-                            // Nothing to do here
-                            // Example: Anna is a currently logged in user and we do not want to
-                            // add Anna to her list of friends
-                        }
-                        else {
-                            String friend = "Click to send email to:";
-                            // Add Friends details to Array List
-                            friendsArrayList.add(friend + " \n" + databaseUser + " \n" + age + " \n" + databaseEmail + " \n" + hobby);
-                        }
-                    }
-                }
-                createListView();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Nothing to do here
-            }
-        });
-    }
-    */
     // *********************************************************************************************
     // ******************** Instantiate the Custom Dialog class ************************************
     // ******************** Retrieve the Custom Dialog View ****************************************
@@ -348,5 +231,30 @@ public class FriendsList extends AppCompatActivity {
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             }
+    }
+
+    // *********************************************************************************************
+    // ******************** Set up custom Action Bar title *****************************************
+    // ******************** Add a logo to the Action Bar *******************************************
+    // *********************************************************************************************
+    public void setUpActionBar() {
+
+        ActionBar myCustomActionBar = getSupportActionBar();
+
+        // Disable default Action Bar settings
+        myCustomActionBar.setDisplayShowHomeEnabled(false);
+        myCustomActionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater myLayoutInflater = LayoutInflater.from(this);
+        View myCustomView = myLayoutInflater.inflate(R.layout.custom_action_bar, null);
+
+        // Get reference of the object from the action_bar_title.xml file
+        TextView myTitleTextView = (TextView) myCustomView.findViewById(R.id.action_bar_title);
+
+        // Set up custom Action Bar
+        String actionBarTitle = "Elderly Companionship";
+        myTitleTextView.setText(actionBarTitle);
+        myCustomActionBar.setCustomView(myCustomView);
+        myCustomActionBar.setDisplayShowCustomEnabled(true);
     }
 }
