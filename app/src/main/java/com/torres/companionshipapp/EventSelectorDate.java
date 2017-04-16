@@ -10,6 +10,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+/**
+ * Name: EventSelectorDate <br>
+ * This class allows to choose the date of event of interest.
+ * @author B00073668 Artur Sukiennik
+ * @version 5, date: 13.04.2017
+ */
 public class EventSelectorDate extends AppCompatActivity {
 
     // Declare global variables and objects
