@@ -11,6 +11,13 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * Name: Map <br>
+ * THIS CLASS IS ADDED TO THE FUTURE WORK part.
+ * This class allows the user to choose the Event to be shown on Google Map.
+ * @author B00073668 Artur Sukiennik
+ * @version 1, date: 22.02.2017
+ */
 public class Map extends AppCompatActivity {
 
     // Declare global variables and objects
@@ -37,7 +44,6 @@ public class Map extends AppCompatActivity {
 
     // *********************************************************************************************
     // ******************** Register Listener for the Show on Map Button ***************************
-    // ******************** Redirect ... ***********************************************************
     // *********************************************************************************************
     public void addListenerToShowOnMapButton () {
         showOnMapButton.setOnClickListener(new View.OnClickListener() {
