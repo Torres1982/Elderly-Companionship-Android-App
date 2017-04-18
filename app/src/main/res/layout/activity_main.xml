@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/network"
+            android:src="@drawable/logo1"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/sixty_dp"
             android:layout_marginBottom="@dimen/thirty_dp" />
