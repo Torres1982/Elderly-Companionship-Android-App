@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_box"
-    android:backgroundTint="@color/mat_blue"
+    android:backgroundTint="@color/wallet_holo_blue_light"
     android:orientation="vertical">
 
     <TextView
@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/mat_blue"
+                android:background="@color/wallet_holo_blue_light"
                 android:orientation="horizontal" >
 
                 <Button
