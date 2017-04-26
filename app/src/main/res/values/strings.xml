@@ -89,11 +89,22 @@
     <!-- *************************************************************************************** -->
     <string-array name = "event_array">
         <item> Bingo </item>
+        <item> Bowling </item>
+        <item> Cinema </item>
+        <item> Coffee-Shop </item>
+        <item> Dancing </item>
         <item> Dogs-Racing </item>
+        <item> Gardening </item>
         <item> Golf </item>
         <item> Horse-Racing </item>
+        <item> Museum </item>
+        <item> Quiz </item>
         <item> Restaurant </item>
+        <item> Shopping </item>
+        <item> Swimming-Pool </item>
         <item> Theatre </item>
+        <item> Yoga </item>
+        <item> Zoo </item>
     </string-array>
 
     <!-- *************************************************************************************** -->
