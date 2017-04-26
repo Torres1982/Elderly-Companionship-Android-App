@@ -11,4 +11,5 @@
     <color name="blue"> #0000ff </color>
     <color name="grey"> #bdbdbd </color>
     <color name="dark_grey"> #2f4f4f </color>
+    <color name="mat_blue"> #0080ff </color>
 </resources>
