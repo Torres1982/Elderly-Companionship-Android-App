@@ -202,8 +202,8 @@ public class ProfilePage extends AppCompatActivity {
         Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
 
         // Set colour of Dialog Buttons
-        positiveButton.setTextColor(Color.YELLOW);
-        negativeButton.setTextColor(Color.YELLOW);
+        positiveButton.setTextColor(Color.DKGRAY);
+        negativeButton.setTextColor(Color.DKGRAY);
     }
 
     // *********************************************************************************************
