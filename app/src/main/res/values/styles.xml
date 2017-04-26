@@ -30,7 +30,7 @@
         <item name="android:textSize"> @dimen/thirty_sp </item>
         <item name="android:textStyle"> bold </item>
         <item name="android:colorAccent" android:ignore="NewApi"> @color/reseneWhite </item>
-        <item name="android:background"> @color/blue </item>
+        <item name="android:background"> @color/mat_blue </item>
     </style>
 
     <!-- *************************************************************************************** -->
