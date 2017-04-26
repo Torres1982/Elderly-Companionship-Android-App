@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_box"
-    android:backgroundTint="@color/mat_blue"
+    android:backgroundTint="@color/wallet_holo_blue_light"
     android:orientation="vertical">
 
     <TextView
