@@ -22,6 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 /**
  * Name: ProfilePage <br>
  * This class is a holder to redirect user to other activities:
@@ -38,7 +42,9 @@ public class ProfilePage extends AppCompatActivity {
     String welcome;
     String userId;
     String loggedUser;
+    String currentDate;
     TextView usernameTextView;
+    TextView currentDateTextView;
     Button findFriendsButton;
     Button findEventsButton;
     Button logOutButton;
@@ -47,6 +53,8 @@ public class ProfilePage extends AppCompatActivity {
     FirebaseAuth logOutAuthentication;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
+    Calendar calendar;
+    SimpleDateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +64,9 @@ public class ProfilePage extends AppCompatActivity {
         // Get the Firebase authentication instance
         logOutAuthentication = FirebaseAuth.getInstance();
 
-        // Assign the name of the user to the Text View
+        // Assign the name of the user to the Text View, and set up current date
         usernameTextView = (TextView)findViewById(R.id.shown_name_text_view);
+        currentDateTextView = (TextView)findViewById(R.id.shown_date_text_view);
 
         // Call the supportive methods
         setUpActionBar();
@@ -72,6 +81,10 @@ public class ProfilePage extends AppCompatActivity {
             welcome = "Welcome " + username;
             usernameTextView.setText(welcome);
         }
+
+        // Set current date
+        setUpCurrentDate();
+        currentDateTextView.setText("Today is: " + currentDate);
 
         // Retrieve the reference of the objects from the profile_page.xml file
         findFriendsButton = (Button)findViewById(R.id.profile_page_button_find_friends);
@@ -303,5 +316,15 @@ public class ProfilePage extends AppCompatActivity {
                 // Nothing to do here
             }
         });
+    }
+
+    // *********************************************************************************************
+    // ******************** Get the Current Date ***************************************************
+    // *********************************************************************************************
+    public void setUpCurrentDate() {
+
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        currentDate = dateFormat.format(calendar.getTime());
     }
 }
