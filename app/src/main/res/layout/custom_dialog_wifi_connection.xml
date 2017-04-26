@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_box"
-    android:backgroundTint="@color/blue"
+    android:backgroundTint="@color/mat_blue"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/sixteen_dp"
         android:text="@string/dialog_wifi_message"
-        android:textColor="@android:color/white"
+        android:textColor="@color/red"
         android:textSize="@dimen/thirty_sp" />
 
 </LinearLayout>
