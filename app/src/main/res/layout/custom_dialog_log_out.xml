@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/sixteen_dp"
         android:text="@string/dialog_log_out_message"
-        android:textColor="@android:color/white"
+        android:textColor="@color/yellow"
         android:textSize="@dimen/thirty_sp" />
 
 </LinearLayout>
