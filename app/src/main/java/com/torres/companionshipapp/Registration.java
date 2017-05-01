@@ -113,7 +113,7 @@ public class Registration extends AppCompatActivity {
                 String nameWarning = "Enter your name";
                 String passwordTooShort = "Password must have " + passwordLength + " or more characters";
                 String validateOnlyLetters = "Use letters only";
-                String validateEmailFormat = "Use correct email format: name.surname@gmail.com";
+                String validateEmailFormat = "Use correct email format: name.name1234@gmail.com";
 
                 // Email Edit Text field has been left empty
                 if (TextUtils.isEmpty(email)) {
