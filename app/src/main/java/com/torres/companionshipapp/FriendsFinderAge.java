@@ -152,7 +152,7 @@ public class FriendsFinderAge extends AppCompatActivity {
                     hobby = myDatabase.child("hobby").getValue(String.class);
                     // Get User age from Firebase database
                     age = myDatabase.child("age").getValue(String.class);
-                    
+
                     // Display users' details with matching hobby
                     if (spinnerValue.equals(age)) {
                     //if (startAgeFromSpinner == userAge && userAge <= ageRangeFinal) {
