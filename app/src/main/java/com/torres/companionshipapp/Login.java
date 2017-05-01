@@ -96,11 +96,11 @@ public class Login extends AppCompatActivity {
                 email = loginEmail.getText().toString().trim();
                 password = loginPassword.getText().toString().trim();
 
-                final int passwordLength = 4;
+                final int passwordLength = 5;
                 String emailWarning = "Enter email address";
                 String passwordWarning = "Enter password";
                 String passwordTooShort = "Password must have " + passwordLength + " or more characters";
-                String validateEmailFormat = "Use correct email format: example@gmail.com";
+                String validateEmailFormat = "Use correct email format: name1234@gmail.com";
 
                 // Email Edit Text field has been left empty
                 if (TextUtils.isEmpty(email)) {
