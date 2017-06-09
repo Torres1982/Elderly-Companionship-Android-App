@@ -35,7 +35,6 @@
         <activity android:name=".HobbyAdd"> </activity>
         <activity android:name=".Map"> </activity>
         <activity android:name=".MapPlaces"> </activity>
-        <activity android:name=".CustomActionBar"> </activity>
         <activity android:name=".FriendsList"> </activity>
         <activity android:name=".DetailUpdater"> </activity>
         <activity android:name=".AgeAdd"> </activity>
@@ -49,6 +48,6 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDCHxPhFLxgYMNnqRXyWh43m0S62z2lrfA" />
+            android:value="AIzaSyB66Od4PQcWDc-Io7_ZrpaXtOe3cnrfU9Y" />
     </application>
 </manifest>
